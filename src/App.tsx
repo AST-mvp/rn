@@ -1,6 +1,11 @@
 import React from 'react';
-import Root from './pages/Root';
+import 'react-native-gesture-handler';
+
+import { ProvideRouter } from '@src/hooks/useRouter';
+import Router from './router';
 
 export default () => (
-  <Root />
+  <ProvideRouter>
+    <Router />
+  </ProvideRouter>
 );
