@@ -1,44 +1,48 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useCallback, useContext, useRef, useState } from 'react';
 import { CommonActions, NavigationContainerRef } from '@react-navigation/native';
 import { RootStackParamList } from '@src/router/navigator';
 
 const useProvidedRouter = () => {
-  const [navigator, setNavigator] = useState<NavigationContainerRef | null>();
+  const navigator = useRef<NavigationContainerRef | null>();
 
-  const navigate = <K extends keyof RootStackParamList>(routeName: K, params?: RootStackParamList[K]) => {
-    if (!navigator) {
+  const setTopLevelNavigator = (ref: NavigationContainerRef | null) => {
+    navigator.current = ref;
+  };
+
+  const navigate = useCallback(<K extends keyof RootStackParamList>(routeName: K, params?: RootStackParamList[K]) => {
+    if (!navigator.current) {
       throw new Error('navigator is not defined');
     }
-    navigator.dispatch(
+    navigator.current.dispatch(
       CommonActions.navigate({
         name: routeName,
         params,
       }),
     );
-  };
+  }, [navigator]);
 
-  const reset = <K extends keyof RootStackParamList>(routeName: K) => {
-    if (!navigator) {
+  const reset = useCallback(<K extends keyof RootStackParamList>(routeName: K) => {
+    if (!navigator.current) {
       throw new Error('navigator is not defined');
     }
-    navigator.dispatch(
+    navigator.current.dispatch(
       CommonActions.reset({
         routes: [
           { name: routeName },
         ],
       }),
     );
-  };
+  }, [navigator]);
 
-  const back = () => {
-    if (!navigator) {
+  const back = useCallback(() => {
+    if (!navigator.current) {
       throw new Error('navigator is not defined');
     }
-    navigator.dispatch(CommonActions.goBack());
-  };
+    navigator.current.dispatch(CommonActions.goBack());
+  }, [navigator]);
 
   return {
-    setNavigator,
+    setTopLevelNavigator,
     navigate,
     reset,
     back,
