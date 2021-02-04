@@ -1,4 +1,4 @@
-package com.rn;
+package com.asimpletag.ast;
 
 import android.app.Application;
 import android.content.Context;
