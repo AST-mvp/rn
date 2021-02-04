@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ImageBackground, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ImageBackground, Text, TouchableOpacity } from 'react-native';
 import styled from '@emotion/native';
 import { login } from '@react-native-seoul/kakao-login';
 import api from '@src/api';
@@ -11,6 +11,14 @@ const Container = styled.View`
 
 export default () => {
   const [userInfo, setUserInfo] = useState<User | null>();
+
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId: '51227550156-n6v9k0mei8ko0l9jm6crnt5go2r6m9pr.apps.googleusercontent.com',
+      scopes: ['profile'],
+    });
+  }, []);
+
   const kakaoLogin = async () => {
     const { accessToken } = await login();
     console.warn(accessToken);
@@ -22,6 +30,7 @@ export default () => {
       await GoogleSignin.hasPlayServices();
       setUserInfo(await GoogleSignin.signIn());
     } catch (error) {
+      console.error(error);
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow
       } else if (error.code === statusCodes.IN_PROGRESS) {
@@ -36,6 +45,7 @@ export default () => {
 
   return (
     <Container>
+      <Text>{`이름: ${userInfo?.user.name}`}</Text>
       <TouchableOpacity onPress={kakaoLogin}>
         <ImageBackground source={require('../../img/kakao_login/en/kakao_login_medium_wide.png')} style={{width: 300, height: 45}}/>
       </TouchableOpacity>
