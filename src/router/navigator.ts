@@ -4,6 +4,7 @@ import { createRef } from 'react';
 
 export type RootStackParamList = {
   Root: undefined;
+  Login: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();

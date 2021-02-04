@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { Text } from 'react-native';
-import nfcManager, { Ndef, NfcEvents, NfcTech, TagEvent } from 'react-native-nfc-manager';
+import { Text, TouchableOpacity, View } from 'react-native';
+import nfcManager, { NfcEvents, NfcTech, TagEvent } from 'react-native-nfc-manager';
 
 const startNFC = async () => {
   try {
@@ -13,40 +13,19 @@ const startNFC = async () => {
 
 const registerTagEvent = async () => {
   await nfcManager.registerTagEvent();
-  nfcManager.setEventListener(NfcEvents.DiscoverTag, async (tag: TagEvent) => {
+  nfcManager.setEventListener(NfcEvents.DiscoverTag, (tag: TagEvent) => {
     console.warn(tag);
-    await readTag();
-    await writeTag();
+    readTag();
   });
 };
 
 const readTag = async () => {
-  const resp = await nfcManager.requestTechnology(NfcTech.Ndef);
+  const resp = await nfcManager.requestTechnology(NfcTech.NfcV);
   console.warn('1', resp);
   const tag = await nfcManager.getTag();
   console.warn('2', JSON.stringify(tag));
   const event = await nfcManager.getNdefMessage();
-  console.warn(JSON.stringify(event));
-  if (event) {
-    const payload = Ndef.text.decodePayload(event.ndefMessage[0].payload as never);
-    console.warn(payload);
-  }
-  await nfcManager.cancelTechnologyRequest();
-};
-
-const writeTag = async () => {
-  const resp = await nfcManager.requestTechnology(NfcTech.Ndef, {
-    alertMessage: 'ready to write some nfc tags!',
-  });
-  console.warn(resp);
-  const ndef = await nfcManager.getNdefMessage();
-  console.warn(ndef);
-  const bytes = Ndef.encodeMessage([
-    Ndef.textRecord('test'),
-  ]);
-  await nfcManager.writeNdefMessage(bytes);
-  console.warn('success');
-  await nfcManager.cancelTechnologyRequest();
+  console.warn(event);
 };
 
 const initNFC = async () => {
@@ -55,12 +34,43 @@ const initNFC = async () => {
   // await readTag();
 };
 
+const _test = async () => {
+  try {
+    await nfcManager.registerTagEvent();
+  } catch (ex) {
+    console.warn('ex', ex);
+    nfcManager.unregisterTagEvent().catch(() => 0);
+  }
+}
+
+const _cancel = () => {
+  nfcManager.unregisterTagEvent().catch(() => 0);
+}
+
 export default () => {
   useEffect(() => {
     initNFC();
   }, []);
 
   return (
-    <Text>대충 메인</Text>
+    <View style={{padding: 20}}>
+        <Text>NFC Demo</Text>
+        <TouchableOpacity 
+          style={{padding: 10, width: 200, margin: 20, borderWidth: 1, borderColor: 'black'}}
+          onPress={_test}
+        >
+          <Text>Test</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity 
+          style={{padding: 10, width: 200, margin: 20, borderWidth: 1, borderColor: 'black'}}
+          onPress={_cancel}
+        >
+          <Text>Cancel Test</Text>
+        </TouchableOpacity>
+      </View>
+    
   );
 };
+
+
