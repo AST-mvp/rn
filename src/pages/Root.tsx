@@ -1,5 +1,6 @@
+import styled from '@emotion/native';
 import React, { useEffect } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text } from 'react-native';
 import nfcManager, { NfcEvents, NfcTech, TagEvent } from 'react-native-nfc-manager';
 
 const startNFC = async () => {
@@ -41,11 +42,22 @@ const _test = async () => {
     console.warn('ex', ex);
     nfcManager.unregisterTagEvent().catch(() => 0);
   }
-}
+};
 
 const _cancel = () => {
   nfcManager.unregisterTagEvent().catch(() => 0);
-}
+};
+
+const Container = styled.View`
+  padding: 20px;
+`;
+
+const Button = styled.TouchableOpacity`
+  padding: 10px;
+  width: 200px;
+  margin: 20px;
+  border-width: 1px solid black;
+`;
 
 export default () => {
   useEffect(() => {
@@ -53,23 +65,15 @@ export default () => {
   }, []);
 
   return (
-    <View style={{padding: 20}}>
+    <Container>
         <Text>NFC Demo</Text>
-        <TouchableOpacity 
-          style={{padding: 10, width: 200, margin: 20, borderWidth: 1, borderColor: 'black'}}
-          onPress={_test}
-        >
+        <Button onPress={_test}>
           <Text>Test</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity 
-          style={{padding: 10, width: 200, margin: 20, borderWidth: 1, borderColor: 'black'}}
-          onPress={_cancel}
-        >
+        </Button>
+        <Button onPress={_cancel}>
           <Text>Cancel Test</Text>
-        </TouchableOpacity>
-      </View>
-    
+        </Button>
+      </Container>
   );
 };
 
