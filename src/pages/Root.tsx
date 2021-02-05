@@ -1,7 +1,7 @@
 import styled from '@emotion/native';
 import React, { useEffect } from 'react';
 import { Text } from 'react-native';
-import nfcManager, { NfcEvents, NfcTech, TagEvent } from 'react-native-nfc-manager';
+import nfcManager, { Ndef, NfcEvents, NfcTech, TagEvent } from 'react-native-nfc-manager';
 
 const startNFC = async () => {
   try {
@@ -21,12 +21,17 @@ const registerTagEvent = async () => {
 };
 
 const readTag = async () => {
-  const resp = await nfcManager.requestTechnology(NfcTech.NfcV);
+  const resp = await nfcManager.requestTechnology(NfcTech.Ndef);
   console.warn('1', resp);
   const tag = await nfcManager.getTag();
   console.warn('2', JSON.stringify(tag));
   const event = await nfcManager.getNdefMessage();
-  console.warn(event);
+  console.warn(JSON.stringify(event));
+  if (event) {
+    const payload = Ndef.text.decodePayload(event.ndefMessage[0].payload as never);
+    console.warn(payload);
+  }
+  await nfcManager.cancelTechnologyRequest();
 };
 
 const initNFC = async () => {
