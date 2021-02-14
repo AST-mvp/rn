@@ -1,5 +1,7 @@
 import styled from '@emotion/native';
-import React, { useEffect } from 'react';
+import api from '@src/api';
+import { setToken } from '@src/utils/auth';
+import React, { useEffect, useState } from 'react';
 import { Text } from 'react-native';
 import nfcManager, { Ndef, NfcEvents, NfcTech, TagEvent } from 'react-native-nfc-manager';
 
@@ -58,27 +60,50 @@ const Container = styled.View`
 `;
 
 const Button = styled.TouchableOpacity`
-  padding: 10px;
+  padding: 16px;
   width: 200px;
-  margin: 20px;
-  border-width: 1px solid black;
+  margin: 8px;
+  text-align: center;
+  border: 1px solid black;
 `;
 
 export default () => {
+  const [tag, setTag] = useState();
+
   useEffect(() => {
     initNFC();
   }, []);
 
+  const handleLogin = async () => {
+    const { data: { access_token } } = await api.post('/login', {
+      id: 'admin',
+      pw: 'admin',
+    });
+    await setToken({ token: access_token});
+  };
+
+  const handleCheckLogin = async () => {
+    const { data } = await api.get('/login');
+    console.warn(data);
+  };
+
+  const handleTag = async () => {
+    const { data } = await api.get(`/products/${1001}`);
+    console.log(data);
+  };
+
   return (
     <Container>
-        <Text>NFC Demo</Text>
-        <Button onPress={_test}>
-          <Text>Test</Text>
-        </Button>
-        <Button onPress={_cancel}>
-          <Text>Cancel Test</Text>
-        </Button>
-      </Container>
+      <Button onPress={handleLogin}>
+        <Text>Login</Text>
+      </Button>
+      <Button onPress={handleCheckLogin}>
+        <Text>Check Login</Text>
+      </Button>
+      <Button onPress={handleTag}>
+        <Text>Tag & Check Mine</Text>
+      </Button>
+    </Container>
   );
 };
 
