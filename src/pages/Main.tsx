@@ -4,6 +4,7 @@ import { NativeSyntheticEvent, Text, TextInputChangeEventData } from 'react-nati
 import { reset } from '@src/router/navigator';
 import { setToken } from '@src/utils/auth';
 import nfcManager, { Ndef, NfcTech } from 'react-native-nfc-manager';
+import api from '@src/api';
 
 const Container = styled.View`
   padding: 20px;
@@ -47,7 +48,6 @@ export default () => {
     await nfcManager.requestTechnology(NfcTech.Ndef);
     setTagData('loaded');
     const event = await nfcManager.getNdefMessage();
-    console.warn(JSON.stringify(event));
     if (!event?.ndefMessage?.[0]) {
       setTagData('fail');
       await nfcManager.cancelTechnologyRequest();
@@ -67,6 +67,22 @@ export default () => {
     ]);
     await nfcManager.writeNdefMessage(bytes);
     setTagData('success');
+    await nfcManager.cancelTechnologyRequest();
+  };
+
+  const checkMine = async () => {
+    setTagData('loading');
+    await nfcManager.requestTechnology(NfcTech.Ndef);
+    setTagData('loaded');
+    const event = await nfcManager.getNdefMessage();
+    if (!event?.ndefMessage?.[0]) {
+      setTagData('fail');
+      await nfcManager.cancelTechnologyRequest();
+      return;
+    }
+    const text = Ndef.text.decodePayload(Uint8Array.from(event.ndefMessage[0].payload));
+    const { data: { result } } = await api.get(`/products/${text}/check`);
+    setTagData(`${result}`);
     await nfcManager.cancelTechnologyRequest();
   };
 
@@ -94,6 +110,9 @@ export default () => {
       </Row>
       <Button onPress={writeId}>
         <Text>Write</Text>
+      </Button>
+      <Button onPress={checkMine}>
+        <Text>Check Mine</Text>
       </Button>
       <Button>
         <Text>Transfer</Text>
