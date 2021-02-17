@@ -33,6 +33,7 @@ const Row = styled.View`
 export default () => {
   const [tagData, setTagData] = useState('');
   const [writeData, setWriteData] = useState('');
+  const [userId, setUserId] = useState('');
 
   const handleTag = async () => {
     setTagData('loading');
@@ -55,6 +56,28 @@ export default () => {
     }
     const text = Ndef.text.decodePayload(Uint8Array.from(event.ndefMessage[0].payload));
     setTagData(text);
+    await nfcManager.cancelTechnologyRequest();
+  };
+
+  const fetchAll = async () => {
+    setTagData('loading');
+    const { data } = await api.get('/products');
+    setTagData(JSON.stringify(data));
+  };
+
+  const fetch = async () => {
+    setTagData('loading');
+    await nfcManager.requestTechnology(NfcTech.Ndef);
+    setTagData('loaded');
+    const event = await nfcManager.getNdefMessage();
+    if (!event?.ndefMessage?.[0]) {
+      setTagData('fail');
+      await nfcManager.cancelTechnologyRequest();
+      return;
+    }
+    const text = Ndef.text.decodePayload(Uint8Array.from(event.ndefMessage[0].payload));
+    const { data } = await api.get(`/products/${text}`);
+    setTagData(JSON.stringify(data));
     await nfcManager.cancelTechnologyRequest();
   };
 
@@ -86,6 +109,25 @@ export default () => {
     await nfcManager.cancelTechnologyRequest();
   };
 
+  const trade = async () => {
+    setTagData('loading');
+    await nfcManager.requestTechnology(NfcTech.Ndef);
+    setTagData('loaded');
+    const event = await nfcManager.getNdefMessage();
+    if (!event?.ndefMessage?.[0]) {
+      setTagData('fail');
+      await nfcManager.cancelTechnologyRequest();
+      return;
+    }
+    const text = Ndef.text.decodePayload(Uint8Array.from(event.ndefMessage[0].payload));
+    await nfcManager.cancelTechnologyRequest();
+    const { data } = await api.post('/products/trade', {
+      userID: userId,
+      nfcID: text,
+    });
+    console.warn(data);
+  };
+
   const logout = async () => {
     await setToken(null);
     reset('Root');
@@ -93,6 +135,10 @@ export default () => {
 
   const handleChangeWriteData = (event: NativeSyntheticEvent<TextInputChangeEventData>) => {
     setWriteData(event.nativeEvent.text);
+  };
+
+  const handleChangeTradeUserId = (event: NativeSyntheticEvent<TextInputChangeEventData>) => {
+    setUserId(event.nativeEvent.text);
   };
 
   return (
@@ -104,6 +150,12 @@ export default () => {
       <Button onPress={readId}>
         <Text>Read</Text>
       </Button>
+      <Button onPress={fetchAll}>
+        <Text>Fetch All</Text>
+      </Button>
+      <Button onPress={fetch}>
+        <Text>Fetch</Text>
+      </Button>
       <Row>
         <Text>write data: </Text>
         <Input value={writeData} onChange={handleChangeWriteData} />
@@ -114,8 +166,12 @@ export default () => {
       <Button onPress={checkMine}>
         <Text>Check Mine</Text>
       </Button>
-      <Button>
-        <Text>Transfer</Text>
+      <Row>
+        <Text>user id: </Text>
+        <Input value={userId} onChange={handleChangeTradeUserId} />
+      </Row>
+      <Button onPress={trade}>
+        <Text>Trade</Text>
       </Button>
       <Button>
         <Text>Register</Text>
