@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import styled from '@emotion/native';
-import { NativeSyntheticEvent, Text, TextInputChangeEventData } from 'react-native';
+import { ScrollView, NativeSyntheticEvent, Text, TextInputChangeEventData } from 'react-native';
 import { reset } from '@src/router/navigator';
 import { setToken } from '@src/utils/auth';
 import nfcManager, { NfcTech } from 'react-native-nfc-manager';
 import api from '@src/api';
 import { readNdef, writeNdef } from '@src/utils/nfc';
-
-const Container = styled.View`
-  padding: 20px;
-`;
 
 const Button = styled.TouchableOpacity`
   padding: 16px;
@@ -117,7 +113,7 @@ export default () => {
   };
 
   return (
-    <Container>
+    <ScrollView>
       <Text>{tagData}</Text>
       <Button onPress={handleTag}>
         <Text>Tag</Text>
@@ -154,6 +150,6 @@ export default () => {
       <Button onPress={logout}>
         <Text>Logout</Text>
       </Button>
-    </Container>
+    </ScrollView>
   );
 };
