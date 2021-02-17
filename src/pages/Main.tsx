@@ -33,6 +33,7 @@ export default () => {
   const [userId, setUserId] = useState('');
 
   const handleTag = async () => {
+    await nfcManager.cancelTechnologyRequest();
     setTagData('loading');
     await nfcManager.requestTechnology(NfcTech.Ndef);
     setTagData('loaded');
@@ -41,7 +42,7 @@ export default () => {
     await nfcManager.cancelTechnologyRequest();
   };
 
-  const readId = async () => {
+  const handleReadId = async () => {
     setTagData('loading');
     const text = await readNdef();
     if (!text) {
@@ -51,13 +52,13 @@ export default () => {
     setTagData(text);
   };
 
-  const fetchAll = async () => {
+  const handleFetchAll = async () => {
     setTagData('loading');
     const { data } = await api.get('/products');
     setTagData(JSON.stringify(data));
   };
 
-  const fetch = async () => {
+  const handleFetch = async () => {
     setTagData('loading');
     const text = await readNdef();
     if (!text) {
@@ -68,13 +69,13 @@ export default () => {
     setTagData(JSON.stringify(data));
   };
 
-  const writeId = async () => {
+  const handleWriteId = async () => {
     setTagData('loading');
     await writeNdef(writeData);
     setTagData('success');
   };
 
-  const checkMine = async () => {
+  const handleCheckMine = async () => {
     setTagData('loading');
     const text = await readNdef();
     if (!text) {
@@ -85,7 +86,7 @@ export default () => {
     setTagData(`${result}`);
   };
 
-  const trade = async () => {
+  const handleTrade = async () => {
     setTagData('loading');
     const text = await readNdef();
     if (!text) {
@@ -99,7 +100,7 @@ export default () => {
     console.warn(data);
   };
 
-  const logout = async () => {
+  const handleLogout = async () => {
     await setToken(null);
     reset('Root');
   };
@@ -118,36 +119,36 @@ export default () => {
       <Button onPress={handleTag}>
         <Text>Tag</Text>
       </Button>
-      <Button onPress={readId}>
+      <Button onPress={handleReadId}>
         <Text>Read</Text>
       </Button>
-      <Button onPress={fetchAll}>
+      <Button onPress={handleFetchAll}>
         <Text>Fetch All</Text>
       </Button>
-      <Button onPress={fetch}>
+      <Button onPress={handleFetch}>
         <Text>Fetch</Text>
       </Button>
       <Row>
         <Text>write data: </Text>
         <Input value={writeData} onChange={handleChangeWriteData} />
       </Row>
-      <Button onPress={writeId}>
+      <Button onPress={handleWriteId}>
         <Text>Write</Text>
       </Button>
-      <Button onPress={checkMine}>
+      <Button onPress={handleCheckMine}>
         <Text>Check Mine</Text>
       </Button>
       <Row>
         <Text>user id: </Text>
         <Input value={userId} onChange={handleChangeTradeUserId} />
       </Row>
-      <Button onPress={trade}>
+      <Button onPress={handleTrade}>
         <Text>Trade</Text>
       </Button>
       <Button>
         <Text>Register</Text>
       </Button>
-      <Button onPress={logout}>
+      <Button onPress={handleLogout}>
         <Text>Logout</Text>
       </Button>
     </ScrollView>
