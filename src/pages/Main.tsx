@@ -3,8 +3,9 @@ import styled from '@emotion/native';
 import { NativeSyntheticEvent, Text, TextInputChangeEventData } from 'react-native';
 import { reset } from '@src/router/navigator';
 import { setToken } from '@src/utils/auth';
-import nfcManager, { Ndef, NfcTech } from 'react-native-nfc-manager';
+import nfcManager, { NfcTech } from 'react-native-nfc-manager';
 import api from '@src/api';
+import { readNdef, writeNdef } from '@src/utils/nfc';
 
 const Container = styled.View`
   padding: 20px;
@@ -46,17 +47,12 @@ export default () => {
 
   const readId = async () => {
     setTagData('loading');
-    await nfcManager.requestTechnology(NfcTech.Ndef);
-    setTagData('loaded');
-    const event = await nfcManager.getNdefMessage();
-    if (!event?.ndefMessage?.[0]) {
+    const text = await readNdef();
+    if (!text) {
       setTagData('fail');
-      await nfcManager.cancelTechnologyRequest();
       return;
     }
-    const text = Ndef.text.decodePayload(Uint8Array.from(event.ndefMessage[0].payload));
     setTagData(text);
-    await nfcManager.cancelTechnologyRequest();
   };
 
   const fetchAll = async () => {
@@ -67,60 +63,39 @@ export default () => {
 
   const fetch = async () => {
     setTagData('loading');
-    await nfcManager.requestTechnology(NfcTech.Ndef);
-    setTagData('loaded');
-    const event = await nfcManager.getNdefMessage();
-    if (!event?.ndefMessage?.[0]) {
+    const text = await readNdef();
+    if (!text) {
       setTagData('fail');
-      await nfcManager.cancelTechnologyRequest();
       return;
     }
-    const text = Ndef.text.decodePayload(Uint8Array.from(event.ndefMessage[0].payload));
     const { data } = await api.get(`/products/${text}`);
     setTagData(JSON.stringify(data));
-    await nfcManager.cancelTechnologyRequest();
   };
 
   const writeId = async () => {
     setTagData('loading');
-    await nfcManager.requestTechnology(NfcTech.Ndef);
-    setTagData('loaded');
-    const bytes = Ndef.encodeMessage([
-      Ndef.textRecord(writeData),
-    ]);
-    await nfcManager.writeNdefMessage(bytes);
+    await writeNdef(writeData);
     setTagData('success');
-    await nfcManager.cancelTechnologyRequest();
   };
 
   const checkMine = async () => {
     setTagData('loading');
-    await nfcManager.requestTechnology(NfcTech.Ndef);
-    setTagData('loaded');
-    const event = await nfcManager.getNdefMessage();
-    if (!event?.ndefMessage?.[0]) {
+    const text = await readNdef();
+    if (!text) {
       setTagData('fail');
-      await nfcManager.cancelTechnologyRequest();
       return;
     }
-    const text = Ndef.text.decodePayload(Uint8Array.from(event.ndefMessage[0].payload));
     const { data: { result } } = await api.get(`/products/${text}/check`);
     setTagData(`${result}`);
-    await nfcManager.cancelTechnologyRequest();
   };
 
   const trade = async () => {
     setTagData('loading');
-    await nfcManager.requestTechnology(NfcTech.Ndef);
-    setTagData('loaded');
-    const event = await nfcManager.getNdefMessage();
-    if (!event?.ndefMessage?.[0]) {
+    const text = await readNdef();
+    if (!text) {
       setTagData('fail');
-      await nfcManager.cancelTechnologyRequest();
       return;
     }
-    const text = Ndef.text.decodePayload(Uint8Array.from(event.ndefMessage[0].payload));
-    await nfcManager.cancelTechnologyRequest();
     const { data } = await api.post('/products/trade', {
       userID: userId,
       nfcID: text,
