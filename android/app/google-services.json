@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:51227550156:android:7d0923d137d1a9db8bbd69",
         "android_client_info": {
-          "package_name": "com.asimpletag.ast"
+          "package_name": "com.ast.mvp"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "51227550156-9j1nkbqma6lt7lred4g9vn0lql9rn1tj.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.asimpletag.ast",
+            "package_name": "com.ast.mvp",
             "certificate_hash": "b5eba46a95ea588c4a819cc3117a7a028936c93b"
           }
         },

@@ -1,4 +1,4 @@
-package com.asimpletag.ast;
+package com.ast.mvp;
 
 import com.facebook.react.ReactActivity;
 
