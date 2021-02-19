@@ -5,6 +5,9 @@ import { createRef } from 'react';
 export type RootStackParamList = {
   Root: undefined;
   Main: undefined;
+  Detail: {
+    nfcId: string;
+  };
   Login: undefined;
 };
 
