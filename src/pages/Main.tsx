@@ -17,12 +17,16 @@ const Button = styled.TouchableOpacity`
 export default () => {
   useFocusEffect(() => {
     const readTag = async () => {
-      const nfcId = await readNdef();
-      if (!nfcId) {
+      try {
+        const nfcId = await readNdef();
+        if (!nfcId) {
+          readTag();
+          return;
+        }
+        navigate('Detail', { nfcId });
+      } catch {
         readTag();
-        return;
       }
-      navigate('Detail', { nfcId });
     };
     readTag();
   });
