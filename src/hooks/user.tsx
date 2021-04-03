@@ -37,7 +37,7 @@ const useProvideAuth = () => {
         return;
       }
       setUser(res.data);
-    });
+    }).catch();
   }, [token]);
 
   return {
