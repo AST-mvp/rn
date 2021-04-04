@@ -1,7 +1,7 @@
 import React from 'react';
 import { readNdef } from '@src/utils/nfc';
 import { useFocusEffect } from '@react-navigation/native';
-import { Text } from 'react-native';
+import { Button, Text } from 'react-native';
 import { navigate } from '@src/router/navigator';
 
 export default () => {
@@ -21,7 +21,12 @@ export default () => {
     readTag();
   });
 
+  const handleTestButton = () => navigate('Detail', { nfcId: '1000' });
+
   return (
-    <Text>태그를 뒷면에 가져다 대세요.</Text>
+    <>
+      <Text>태그를 뒷면에 가져다 대세요.</Text>
+      <Button title="test" onPress={handleTestButton} />
+    </>
   );
 };
