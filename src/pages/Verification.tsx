@@ -21,7 +21,7 @@ export default () => {
     readTag();
   });
 
-  const handleTestButton = () => navigate('Detail', { nfcId: '1000' });
+  const handleTestButton = () => navigate('Detail', { nfcId: '1008' });
 
   return (
     <>
