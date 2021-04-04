@@ -11,7 +11,7 @@ type Props = {
 export default ({ route: { params: { nfcId }}}: Props) => {
   const [st, setSt] = useState('');
   useEffect(() => {
-    api.get(`/products/${nfcId}`).then(({ data }) => setSt(data));
+    api.get(`/products/${nfcId}`).then(({ data }) => setSt(data.result));
   }, [nfcId]);
   return <Text>{JSON.stringify(st)}</Text>;
 };
