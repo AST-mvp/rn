@@ -1,21 +1,20 @@
 import React from 'react';
-import { Button, TouchableOpacity } from 'react-native';
 import styled from '@emotion/native';
 import { login } from '@react-native-seoul/kakao-login';
 import api from '@src/api';
-import { GoogleSignin, GoogleSigninButton } from '@react-native-community/google-signin';
+import { GoogleSignin } from '@react-native-community/google-signin';
 import AsyncStorage from '@react-native-community/async-storage';
 import useAuth from '@src/hooks/user';
 import { reset } from '@src/router/navigator';
-import kakaoLoginImage from '@src/img/kakao_login/en/kakao_login_medium_wide.png';
+import { Text } from 'react-native';
 
 const Container = styled.View`
   padding: 20px;
 `;
 
-const KakaoLoginImage = styled.Image`
-  width: 300px;
-  height: 45px;
+const LoginButton = styled.TouchableOpacity`
+  margin-bottom: 10px;
+  border: 1px solid black;
 `;
 
 export default () => {
@@ -51,11 +50,9 @@ export default () => {
 
   return (
     <Container>
-      <TouchableOpacity onPress={kakaoLogin}>
-        <KakaoLoginImage source={kakaoLoginImage} />
-      </TouchableOpacity>
-      <GoogleSigninButton onPress={googleLogin} />
-      <Button onPress={mockLogin} title="admin login" />
+      <LoginButton onPress={kakaoLogin}><Text>kakao login</Text></LoginButton>
+      <LoginButton onPress={googleLogin}><Text>google login</Text></LoginButton>
+      <LoginButton onPress={mockLogin}><Text>admin login</Text></LoginButton>
     </Container>
   );
 };
