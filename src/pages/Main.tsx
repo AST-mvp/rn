@@ -1,8 +1,6 @@
 import React from 'react';
 import { navigate, reset } from '@src/router/navigator';
 import { Text } from 'react-native';
-import { readNdef } from '@src/utils/nfc';
-import { useFocusEffect } from '@react-navigation/native';
 import { setToken } from '@src/utils/auth';
 import styled from '@emotion/native';
 
@@ -15,21 +13,9 @@ const Button = styled.TouchableOpacity`
 `;
 
 export default () => {
-  useFocusEffect(() => {
-    const readTag = async () => {
-      try {
-        const nfcId = await readNdef();
-        if (!nfcId) {
-          readTag();
-          return;
-        }
-        navigate('Detail', { nfcId });
-      } catch {
-        readTag();
-      }
-    };
-    readTag();
-  });
+  const handleVerification = () => navigate('Verification');
+
+  const handleMyCloset = () => navigate('MyCloset');
 
   const handleLogout = async () => {
     await setToken(null);
@@ -38,7 +24,12 @@ export default () => {
 
   return (
     <>
-      <Text>태그를 가져다대세요</Text>
+      <Button onPress={handleVerification}>
+        <Text>Verification</Text>
+      </Button>
+      <Button onPress={handleMyCloset}>
+        <Text>My closet</Text>
+      </Button>
       <Button onPress={handleLogout}>
         <Text>Logout</Text>
       </Button>
