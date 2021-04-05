@@ -40,22 +40,12 @@ export default () => {
     updateToken(data.token);
   };
 
-  // const mockLogin = async () => {
-  //   const { data: { access_token } } = await api.post('/login', {
-  //     id: 'admin',
-  //     pw: 'admin',
-  //   });
-  //   updateToken(access_token);
-  // };
-
   const mockLogin = async () => {
-    const body = {
+    const { data: { access_token } } = await api.post('/login', {
       id: 'admin',
       pw: 'admin',
-    }
-    const res = await api.post('/login', body);
-    // updateToken(access_token);
-    console.log(res)
+    });
+    updateToken(access_token);
   };
 
   return (
