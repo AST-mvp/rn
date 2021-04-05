@@ -6,7 +6,7 @@ import { GoogleSignin } from '@react-native-community/google-signin';
 import AsyncStorage from '@react-native-community/async-storage';
 import useAuth from '@src/hooks/user';
 import { reset } from '@src/router/navigator';
-import { Text } from 'react-native';
+import { SafeAreaView, Text } from 'react-native';
 
 const Container = styled.View`
   padding: 20px;
@@ -49,10 +49,12 @@ export default () => {
   };
 
   return (
-    <Container>
-      <LoginButton onPress={kakaoLogin}><Text>kakao login</Text></LoginButton>
-      <LoginButton onPress={googleLogin}><Text>google login</Text></LoginButton>
-      <LoginButton onPress={mockLogin}><Text>admin login</Text></LoginButton>
-    </Container>
+    <SafeAreaView>
+      <Container>
+        <LoginButton onPress={kakaoLogin}><Text>kakao login</Text></LoginButton>
+        <LoginButton onPress={googleLogin}><Text>google login</Text></LoginButton>
+        <LoginButton onPress={mockLogin}><Text>admin login</Text></LoginButton>
+      </Container>
+    </SafeAreaView>
   );
 };
