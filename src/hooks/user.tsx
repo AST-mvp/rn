@@ -1,6 +1,12 @@
 import api from '@src/api';
 import { setToken } from '@src/utils/auth';
-import React, { createContext, useContext, useState, useReducer, useEffect } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useReducer,
+  useEffect,
+} from 'react';
 
 interface Token {
   token: string;
@@ -28,16 +34,19 @@ const useProvideAuth = () => {
       setToken(newToken);
       return newToken;
     },
-    { token: '' }
+    { token: '' },
   );
 
   useEffect(() => {
-    api.get('/users/me').then((res) => {
-      if (!res.data.login) {
-        return;
-      }
-      setUser(res.data);
-    }).catch();
+    api
+      .get('/users/me')
+      .then((res) => {
+        if (!res.data.login) {
+          return;
+        }
+        setUser(res.data);
+      })
+      .catch();
   }, [token]);
 
   return {
@@ -46,7 +55,9 @@ const useProvideAuth = () => {
   };
 };
 
-const authContext = createContext<ReturnType<typeof useProvideAuth> | undefined>(undefined);
+const authContext = createContext<
+  ReturnType<typeof useProvideAuth> | undefined
+>(undefined);
 
 export const ProvideAuth: React.FC = (props) => {
   const auth = useProvideAuth();

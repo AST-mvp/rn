@@ -8,16 +8,16 @@ export const readNdef = async () => {
     await nfcManager.cancelTechnologyRequest();
     return null;
   }
-  const text = Ndef.text.decodePayload(Uint8Array.from(event.ndefMessage[0].payload));
+  const text = Ndef.text.decodePayload(
+    Uint8Array.from(event.ndefMessage[0].payload),
+  );
   return text;
 };
 
 export const writeNdef = async (data: string) => {
   await nfcManager.cancelTechnologyRequest();
   await nfcManager.requestTechnology(NfcTech.Ndef);
-  const bytes = Ndef.encodeMessage([
-    Ndef.textRecord(data),
-  ]);
+  const bytes = Ndef.encodeMessage([Ndef.textRecord(data)]);
   await nfcManager.writeNdefMessage(bytes);
   await nfcManager.cancelTechnologyRequest();
 };

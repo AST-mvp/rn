@@ -41,7 +41,9 @@ export default () => {
   };
 
   const mockLogin = async () => {
-    const { data: { access_token } } = await api.post('/login', {
+    const {
+      data: { access_token },
+    } = await api.post('/login', {
       id: 'admin',
       pw: 'admin',
     });
@@ -50,9 +52,15 @@ export default () => {
 
   return (
     <Container>
-      <LoginButton onPress={kakaoLogin}><Text>kakao login</Text></LoginButton>
-      <LoginButton onPress={googleLogin}><Text>google login</Text></LoginButton>
-      <LoginButton onPress={mockLogin}><Text>admin login</Text></LoginButton>
+      <LoginButton onPress={kakaoLogin}>
+        <Text>kakao login</Text>
+      </LoginButton>
+      <LoginButton onPress={googleLogin}>
+        <Text>google login</Text>
+      </LoginButton>
+      <LoginButton onPress={mockLogin}>
+        <Text>admin login</Text>
+      </LoginButton>
     </Container>
   );
 };

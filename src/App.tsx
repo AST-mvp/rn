@@ -6,7 +6,8 @@ import Router from './router';
 import { ProvideAuth } from './hooks/user';
 
 GoogleSignin.configure({
-  webClientId: '51227550156-n6v9k0mei8ko0l9jm6crnt5go2r6m9pr.apps.googleusercontent.com',
+  webClientId:
+    '51227550156-n6v9k0mei8ko0l9jm6crnt5go2r6m9pr.apps.googleusercontent.com',
 });
 
 export default () => (
@@ -14,4 +15,3 @@ export default () => (
     <Router />
   </ProvideAuth>
 );
-

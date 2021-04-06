@@ -1,4 +1,7 @@
-import { CommonActions, NavigationContainerRef } from '@react-navigation/native';
+import {
+  CommonActions,
+  NavigationContainerRef,
+} from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createRef } from 'react';
 
@@ -17,7 +20,10 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 export const navigationRef = createRef<NavigationContainerRef>();
 
-export const navigate = <K extends keyof RootStackParamList>(routeName: K, params?: RootStackParamList[K]) => {
+export const navigate = <K extends keyof RootStackParamList>(
+  routeName: K,
+  params?: RootStackParamList[K],
+) => {
   if (!navigationRef.current) {
     throw new Error('navigator is not defined');
   }
@@ -35,9 +41,7 @@ export const reset = <K extends keyof RootStackParamList>(routeName: K) => {
   }
   navigationRef.current.dispatch(
     CommonActions.reset({
-      routes: [
-        { name: routeName },
-      ],
+      routes: [{ name: routeName }],
     }),
   );
 };
