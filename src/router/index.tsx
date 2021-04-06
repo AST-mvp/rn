@@ -7,6 +7,7 @@ import Main from '@src/pages/Main';
 import Detail from '@src/pages/Detail';
 import MyCloset from '@src/pages/MyCloset';
 import Verification from '@src/pages/Verification';
+import Trade from '@src/pages/Trade';
 
 export default () => {
   return (
@@ -17,6 +18,7 @@ export default () => {
         <Stack.Screen name="Verification" component={Verification} />
         <Stack.Screen name="MyCloset" component={MyCloset} />
         <Stack.Screen name="Detail" component={Detail} />
+        <Stack.Screen name="Trade" component={Trade} />
         <Stack.Screen name="Login" component={Login} />
       </Stack.Navigator>
     </NavigationContainer>

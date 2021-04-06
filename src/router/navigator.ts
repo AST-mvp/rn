@@ -13,6 +13,9 @@ export type RootStackParamList = {
   Detail: {
     nfcId: string;
   };
+  Trade: {
+    nfcId: string;
+  };
   Login: undefined;
 };
 
