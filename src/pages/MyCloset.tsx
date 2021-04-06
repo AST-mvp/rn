@@ -1,6 +1,7 @@
 import styled from '@emotion/native';
 import { useFocusEffect } from '@react-navigation/core';
 import api from '@src/api';
+import { Product } from '@src/constants/types';
 import React, { useState } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
@@ -16,16 +17,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
 });
-
-interface Product {
-  nfcID: string,
-  brandID: string,
-  productID: string,
-  editionID: string,
-  manufactureDate: string,
-  limited: string,
-  ownerID: string,
-}
 
 const Item: React.FC<Product> = ({ productID, brandID, manufactureDate }) => (
   <ItemContainer>
