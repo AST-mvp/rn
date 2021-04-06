@@ -18,9 +18,11 @@ export default ({
   useEffect(() => {
     api.get(`/products/${nfcId}`).then(({ data }) => setProduct(data.result));
   }, [nfcId]);
-  return (
+  return product ? (
     <>
-      <Text>{JSON.stringify(product)}</Text>
+      <Text>brand: {product.brandID}</Text>
+      <Text>product: {product.productID}</Text>
+      <Text>{product.manufactureDate}</Text>
     </>
-  );
+  ) : null;
 };
