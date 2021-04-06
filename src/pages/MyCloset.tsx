@@ -20,8 +20,8 @@ const styles = StyleSheet.create({
 
 const Item: React.FC<Product> = ({ productID, brandID, manufactureDate }) => (
   <ItemContainer>
-    <Name>productID: {productID}</Name>
-    <Name>brandID: {brandID}</Name>
+    <Name>product: {productID}</Name>
+    <Name>brand: {brandID}</Name>
     <Name>{manufactureDate}</Name>
   </ItemContainer>
 );
