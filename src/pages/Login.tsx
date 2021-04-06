@@ -50,6 +50,16 @@ export default () => {
     updateToken(access_token);
   };
 
+  const mockLogin2 = async () => {
+    const {
+      data: { access_token },
+    } = await api.post('/login', {
+      id: 'test3',
+      pw: '3333',
+    });
+    updateToken(access_token);
+  };
+
   return (
     <Container>
       <LoginButton onPress={kakaoLogin}>
@@ -60,6 +70,9 @@ export default () => {
       </LoginButton>
       <LoginButton onPress={mockLogin}>
         <Text>admin login</Text>
+      </LoginButton>
+      <LoginButton onPress={mockLogin2}>
+        <Text>user3 login</Text>
       </LoginButton>
     </Container>
   );
