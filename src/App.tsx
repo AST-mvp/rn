@@ -1,5 +1,6 @@
 import React from 'react';
 import 'react-native-gesture-handler';
+import { SafeAreaView } from 'react-native';
 import { GoogleSignin } from '@react-native-community/google-signin';
 
 import Router from './router';
@@ -11,7 +12,9 @@ GoogleSignin.configure({
 });
 
 export default () => (
-  <ProvideAuth>
-    <Router />
-  </ProvideAuth>
+  <SafeAreaView>
+    <ProvideAuth>
+      <Router />
+    </ProvideAuth>
+  </SafeAreaView>
 );
