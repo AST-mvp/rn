@@ -14,19 +14,24 @@ export default ({
     params: { nfcId },
   },
 }: Props) => {
-  const [product, setProduct] = useState<Product>();
+  const [product, setProduct] = useState<Product | null>();
   useEffect(() => {
-    api.get(`/products/${nfcId}`).then(({ data }) => setProduct(data.result));
+    api
+      .get(`/products/${nfcId}`)
+      .then(({ data }) => setProduct(data.result))
+      .catch(() => setProduct(null));
   }, [nfcId]);
 
   const handleTrade = () => navigate('Trade', { nfcId });
 
-  return product ? (
+  return product === undefined ? null : product === null ? (
+    <Text>찾을 수 없습니다.</Text>
+  ) : (
     <>
       <Text>brand: {product.brandID}</Text>
       <Text>product: {product.productID}</Text>
       <Text>{product.manufactureDate}</Text>
       <Button title="trade" onPress={handleTrade} />
     </>
-  ) : null;
+  );
 };
