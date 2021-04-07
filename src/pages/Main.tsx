@@ -22,6 +22,8 @@ export default () => {
     reset('Root');
   };
 
+  const handleTest = () => navigate('TestArea');
+
   return (
     <>
       <Button onPress={handleVerification}>
@@ -33,6 +35,9 @@ export default () => {
       <Button onPress={handleLogout}>
         <Text>Logout</Text>
       </Button>
+      {/* <Button onPress={handleTest}>
+        <Text>Goto TestArea</Text>
+      </Button> */}
     </>
   );
 };

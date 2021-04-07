@@ -8,6 +8,7 @@ import Detail from '@src/pages/Detail';
 import MyCloset from '@src/pages/MyCloset';
 import Verification from '@src/pages/Verification';
 import Trade from '@src/pages/Trade';
+import TestArea from '@src/pages/TestArea';
 
 export default () => {
   return (
@@ -20,6 +21,7 @@ export default () => {
         <Stack.Screen name="Detail" component={Detail} />
         <Stack.Screen name="Trade" component={Trade} />
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="TestArea" component={TestArea} />
       </Stack.Navigator>
     </NavigationContainer>
   );

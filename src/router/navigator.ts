@@ -17,6 +17,7 @@ export type RootStackParamList = {
     nfcId: string;
   };
   Login: undefined;
+  TestArea: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
