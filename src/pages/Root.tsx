@@ -23,7 +23,7 @@ export default () => {
     (async () => {
       const token = await getToken();
       if (!token) {
-        return reset('Login');
+        return reset('Init');
       }
       dispatchToken({ type: 'update', token: token.token });
       return reset('Main');

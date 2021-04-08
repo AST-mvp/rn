@@ -7,6 +7,7 @@ import { createRef } from 'react';
 
 export type RootStackParamList = {
   Root: undefined;
+  Init: undefined;
   Main: undefined;
   Verification: undefined;
   MyCloset: undefined;
