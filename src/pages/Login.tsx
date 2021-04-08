@@ -108,6 +108,7 @@ export default () => {
         value={email}
         onChangeText={setEmail}
         placeholder="이메일을 입력하세요"
+        autoCapitalize="none"
       />
       <TextInput
         value={pw}
@@ -115,6 +116,7 @@ export default () => {
         textContentType="password"
         secureTextEntry
         placeholder="패스워드를 입력하세요"
+        autoCapitalize="none"
       />
       <LoginButton onPress={handleLogin}>
         <LoginText>로그인</LoginText>
