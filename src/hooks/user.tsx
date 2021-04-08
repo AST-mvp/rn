@@ -41,7 +41,7 @@ const useProvideAuth = () => {
     api
       .get('/users/me')
       .then((res) => {
-        if (!res.data.login) {
+        if (res.data.login === false) {
           return;
         }
         setUser(res.data);
