@@ -1,6 +1,6 @@
 import React from 'react';
 import { navigate, reset } from '@src/router/navigator';
-import { Text } from 'react-native';
+import { Text, SafeAreaView } from 'react-native';
 import { setToken } from '@src/utils/auth';
 import styled from '@emotion/native';
 
@@ -23,7 +23,7 @@ export default () => {
   };
 
   return (
-    <>
+    <SafeAreaView>
       <Button onPress={handleVerification}>
         <Text>Verification</Text>
       </Button>
@@ -33,6 +33,6 @@ export default () => {
       <Button onPress={handleLogout}>
         <Text>Logout</Text>
       </Button>
-    </>
+    </SafeAreaView>
   );
 };
