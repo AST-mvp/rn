@@ -22,6 +22,8 @@ export default () => {
     reset('Root');
   };
 
+  const handleTest = () => navigate('TestArea');
+
   return (
     <SafeAreaView>
       <Button onPress={handleVerification}>
