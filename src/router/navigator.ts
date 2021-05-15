@@ -9,6 +9,7 @@ export type RootStackParamList = {
   Root: undefined;
   Init: undefined;
   Main: undefined;
+  Drop: undefined;
   Verification: undefined;
   MyCloset: undefined;
   Detail: {
