@@ -1,24 +1,94 @@
 import React from 'react';
 import Drop from '@src/pages/Drop';
-import { Tab } from './navigator';
+import { MainTabParamList, Tab } from './navigator';
 import MyCloset from '@src/pages/MyCloset';
 import Verification from '@src/pages/Verification';
-import { StyleSheet } from 'react-native';
+import { Image, ImageSourcePropType, StyleSheet } from 'react-native';
 import Profile from '@src/pages/Profile';
 import Search from '@src/pages/Search';
+
+import dropActiveIcon from '../assets/images/drop-filled.png';
+import dropInactiveIcon from '../assets/images/drop-outlined.png';
+import searchInactiveIcon from '../assets/images/search-outlined.png';
+import verificationInactiveIcon from '../assets/images/verification-outlined.png';
+import myclosetActiveIcon from '../assets/images/closet-filled.png';
+import myclosetInactiveIcon from '../assets/images/closet-outlined.png';
+import profileActiveIcon from '../assets/images/profile-filled.png';
+import profileInactiveIcon from '../assets/images/profile-outlined.png';
 
 const styles = StyleSheet.create({
   tabSceneContainerStyle: {
     backgroundColor: 'white',
   },
+  defaultIcon: {
+    width: 24,
+    height: 24,
+  },
+  verificationIcon: {
+    width: 56,
+    height: 56,
+  },
 });
+
+const tabBarList: {
+  name: keyof MainTabParamList;
+  component: React.ComponentType;
+  activeIcon: ImageSourcePropType;
+  inactiveIcon: ImageSourcePropType;
+}[] = [
+  {
+    name: 'Drop',
+    component: Drop,
+    activeIcon: dropActiveIcon,
+    inactiveIcon: dropInactiveIcon,
+  },
+  {
+    name: 'Search',
+    component: Search,
+    activeIcon: searchInactiveIcon,
+    inactiveIcon: searchInactiveIcon,
+  },
+  {
+    name: 'Verification',
+    component: Verification,
+    activeIcon: verificationInactiveIcon,
+    inactiveIcon: verificationInactiveIcon,
+  },
+  {
+    name: 'MyCloset',
+    component: MyCloset,
+    activeIcon: myclosetActiveIcon,
+    inactiveIcon: myclosetInactiveIcon,
+  },
+  {
+    name: 'Profile',
+    component: Profile,
+    activeIcon: profileActiveIcon,
+    inactiveIcon: profileInactiveIcon,
+  },
+];
 
 export default () => (
   <Tab.Navigator sceneContainerStyle={styles.tabSceneContainerStyle}>
-    <Tab.Screen name="Drop" component={Drop} />
-    <Tab.Screen name="Search" component={Search} />
-    <Tab.Screen name="Verification" component={Verification} />
-    <Tab.Screen name="MyCloset" component={MyCloset} />
-    <Tab.Screen name="Profile" component={Profile} />
+    {tabBarList.map((page) => (
+      <Tab.Screen
+        name={page.name}
+        component={page.component}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={focused ? page.activeIcon : page.inactiveIcon}
+              style={
+                page.name !== 'Verification'
+                  ? styles.defaultIcon
+                  : styles.verificationIcon
+              }
+              resizeMode="contain"
+            />
+          ),
+          tabBarLabel: page.name === 'Verification' ? '' : undefined,
+        }}
+      />
+    ))}
   </Tab.Navigator>
 );
