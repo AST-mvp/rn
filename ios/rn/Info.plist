@@ -66,13 +66,14 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Road Rage.otf</string>
 		<string>paybooc OTF Bold.otf</string>
 		<string>NEXON Lv1 Gothic OTF Bold.otf</string>
 		<string>NanumSquareBold.ttf</string>
+		<string>Gong Gothic OTF Medium.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
