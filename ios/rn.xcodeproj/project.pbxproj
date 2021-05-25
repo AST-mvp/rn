@@ -18,7 +18,11 @@
 		2DCD954D1E0B4F2C00145EB5 /* rnTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* rnTests.m */; };
 		37B108FBC2DE9AE5394B41CF /* libPods-rn-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D93D2A52E761EA232687FC87 /* libPods-rn-tvOSTests.a */; };
 		5BD5CB84265CE21100A25B95 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BD5CB83265CE21100A25B95 /* GoogleService-Info.plist */; };
+		5BD5CB86265D141700A25B95 /* AST.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BD5CB85265D141700A25B95 /* AST.png */; };
+		5BD5CB88265D141D00A25B95 /* A SIMPLE TAG.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BD5CB87265D141D00A25B95 /* A SIMPLE TAG.png */; };
+		75F2BC82A4A2437FA144A64A /* NEXON Lv1 Gothic OTF Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BC443B596696427DBD3B6CB2 /* NEXON Lv1 Gothic OTF Bold.otf */; };
 		76723087F9BABB3F71083936 /* libPods-rn-rnTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E14607856577AA07CF8F21F /* libPods-rn-rnTests.a */; };
+		788A5C2B49ED4DDBA517DCB6 /* paybooc OTF Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9330F9D5D34E41F8BA8ED8C2 /* paybooc OTF Bold.otf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		89B13538AD94B301F12041BB /* libPods-rn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4673DB2B69BEDF6DD01F00DD /* libPods-rn.a */; };
 		AA39EC0DED46EDE52D1FF866 /* libPods-rn-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C6B518F063FA4462E202AB /* libPods-rn-tvOS.a */; };
@@ -60,11 +64,15 @@
 		4D2B707CFE632446BE39D652 /* Pods-rn-rnTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn-rnTests.release.xcconfig"; path = "Target Support Files/Pods-rn-rnTests/Pods-rn-rnTests.release.xcconfig"; sourceTree = "<group>"; };
 		4E14607856577AA07CF8F21F /* libPods-rn-rnTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rn-rnTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD5CB83265CE21100A25B95 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5BD5CB85265D141700A25B95 /* AST.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AST.png; path = Resources/AST.png; sourceTree = "<group>"; };
+		5BD5CB87265D141D00A25B95 /* A SIMPLE TAG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "A SIMPLE TAG.png"; path = "Resources/A SIMPLE TAG.png"; sourceTree = "<group>"; };
 		65F975567492F7ADFD22D066 /* Pods-rn-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-rn-tvOSTests/Pods-rn-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		75C6B518F063FA4462E202AB /* libPods-rn-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rn-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = rn/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9330F9D5D34E41F8BA8ED8C2 /* paybooc OTF Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "paybooc OTF Bold.otf"; path = "../src/assets/fonts/paybooc OTF Bold.otf"; sourceTree = "<group>"; };
 		AADDB015B352E013B0BE003D /* Pods-rn-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn-tvOS.release.xcconfig"; path = "Target Support Files/Pods-rn-tvOS/Pods-rn-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		AB66F16E502286A7422AB205 /* Pods-rn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn.release.xcconfig"; path = "Target Support Files/Pods-rn/Pods-rn.release.xcconfig"; sourceTree = "<group>"; };
+		BC443B596696427DBD3B6CB2 /* NEXON Lv1 Gothic OTF Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "NEXON Lv1 Gothic OTF Bold.otf"; path = "../src/assets/fonts/NEXON Lv1 Gothic OTF Bold.otf"; sourceTree = "<group>"; };
 		BFA9226E5696A32BA62CC663 /* Pods-rn-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-rn-tvOSTests/Pods-rn-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D93D2A52E761EA232687FC87 /* libPods-rn-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-rn-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0F766B19A01EBD7BF77A00B /* Pods-rn-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-rn-tvOS/Pods-rn-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -206,7 +214,11 @@
 		E644DDA1922B4E0D8DEDDE49 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5BD5CB87265D141D00A25B95 /* A SIMPLE TAG.png */,
+				5BD5CB85265D141700A25B95 /* AST.png */,
 				34A4123B9F5F482A852BF71B /* Road Rage.otf */,
+				9330F9D5D34E41F8BA8ED8C2 /* paybooc OTF Bold.otf */,
+				BC443B596696427DBD3B6CB2 /* NEXON Lv1 Gothic OTF Bold.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -304,7 +316,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
@@ -359,8 +371,12 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				5BD5CB84265CE21100A25B95 /* GoogleService-Info.plist in Resources */,
+				5BD5CB86265D141700A25B95 /* AST.png in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				28A4AEF8258A48D080FB9064 /* Road Rage.otf in Resources */,
+				788A5C2B49ED4DDBA517DCB6 /* paybooc OTF Bold.otf in Resources */,
+				75F2BC82A4A2437FA144A64A /* NEXON Lv1 Gothic OTF Bold.otf in Resources */,
+				5BD5CB88265D141D00A25B95 /* A SIMPLE TAG.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,13 +716,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F0BE89C8AD07FCBBFB889517 /* Pods-rn-rnTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = rnTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -723,10 +740,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4D2B707CFE632446BE39D652 /* Pods-rn-rnTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = rnTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -809,7 +827,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 10.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Debug;
 		};
@@ -837,7 +855,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 10.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Release;
 		};
@@ -864,7 +882,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rn-tvOS.app/rn-tvOS";
-				TVOS_DEPLOYMENT_TARGET = 10.1;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Debug;
 		};
@@ -891,7 +909,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rn-tvOS.app/rn-tvOS";
-				TVOS_DEPLOYMENT_TARGET = 10.1;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Release;
 		};
@@ -918,6 +936,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -942,7 +961,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
@@ -978,6 +997,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -995,7 +1015,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
