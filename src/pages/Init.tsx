@@ -1,50 +1,36 @@
 import React from 'react';
 import styled from '@emotion/native';
 import { navigate } from '@src/router/navigator';
+import Button from '@src/components/Button';
+import colors from '@src/constants/colors';
 
 const Container = styled.View`
   flex: 1;
-  background-color: #f2f2f2;
-  padding: 16px;
+  padding: 20px;
+  background-color: #fff;
 `;
 
 const Title = styled.Text`
-  font-size: 60px;
+  font-size: 65px;
   text-align: center;
   margin-top: 120px;
   font-family: 'Road Rage';
 `;
 
 const SubTitle = styled.Text`
-  font-size: 20px;
+  font-size: 15px;
   text-align: center;
-  margin-top: 8px;
+  font-family: 'paybooc OTF Bold';
 `;
 
 const Spacer = styled.View`
   flex: 1;
 `;
 
-const LoginButton = styled.TouchableOpacity`
+const LoginButton = styled(Button)`
   background-color: white;
-  border-radius: 8px;
-  padding: 16px;
-`;
-
-const LoginText = styled.Text`
-  text-align: center;
-`;
-
-const RegisterButton = styled.TouchableOpacity`
-  background-color: black;
-  border-radius: 8px;
-  padding: 16px;
-  margin-top: 8px;
-`;
-
-const RegisterText = styled.Text`
-  color: white;
-  text-align: center;
+  border: 1px solid ${colors.borderColor};
+  margin-bottom: 10px;
 `;
 
 export default () => {
@@ -57,12 +43,8 @@ export default () => {
       <Title>AST</Title>
       <SubTitle>A Simple Tag</SubTitle>
       <Spacer />
-      <LoginButton onPress={handleLogin}>
-        <LoginText>로그인</LoginText>
-      </LoginButton>
-      <RegisterButton onPress={handleRegister}>
-        <RegisterText>회원가입</RegisterText>
-      </RegisterButton>
+      <LoginButton text="로그인" textColor="black" onPress={handleLogin} />
+      <Button text="회원가입" onPress={handleRegister} />
     </Container>
   );
 };
