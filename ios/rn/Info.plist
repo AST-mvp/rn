@@ -30,9 +30,26 @@
 				<string>com.googleusercontent.apps.51227550156-72gpdjmbedgn18n066r6g22a1kjp2k2m</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>kakaoec82e5f940720dfd6c75991c91dd06a0</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>KAKAO_APP_KEY</key>
+	<string>ec82e5f940720dfd6c75991c91dd06a0</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>kakaokompassauth</string>
+		<string>storykompassauth</string>
+		<string>kakaolink</string>
+		<string>kakaoec82e5f940720dfd6c75991c91dd06a0</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -49,7 +66,14 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Road Rage.otf</string>
+		<string>paybooc OTF Bold.otf</string>
+		<string>NEXON Lv1 Gothic OTF Bold.otf</string>
+		<string>NanumSquareBold.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -64,12 +88,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Road Rage.otf</string>
-		<string>paybooc OTF Bold.otf</string>
-		<string>NEXON Lv1 Gothic OTF Bold.otf</string>
-		<string>NanumSquareBold.ttf</string>
-	</array>
 </dict>
 </plist>

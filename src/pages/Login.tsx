@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/native';
-import { login } from '@react-native-seoul/kakao-login';
+import { login as loginAsKakao } from '@react-native-seoul/kakao-login';
 import api from '@src/api';
 import { GoogleSignin } from '@react-native-community/google-signin';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -74,7 +74,7 @@ export default () => {
   };
 
   const kakaoLogin = async () => {
-    const { accessToken } = await login();
+    const { accessToken } = await loginAsKakao();
     const { data } = await api.post('/auth/oauth/kakao', { accessToken });
     updateToken(data.token);
   };
