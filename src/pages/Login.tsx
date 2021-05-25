@@ -7,6 +7,8 @@ import AsyncStorage from '@react-native-community/async-storage';
 import useAuth from '@src/hooks/user';
 import { reset } from '@src/router/navigator';
 import TextInput from '@src/components/TextInput';
+import Button from '@src/components/Button';
+import colors from '@src/constants/colors';
 
 const Container = styled.View`
   flex: 1;
@@ -22,42 +24,41 @@ const Title = styled.Text`
   font-size: 36px;
 `;
 
-const LoginButton = styled.TouchableOpacity`
-  background-color: black;
-  border-radius: 8px;
-  padding: 16px;
-  margin-top: 8px;
-`;
-
-const LoginText = styled.Text`
-  color: white;
-  text-align: center;
+const FormInput = styled(TextInput)`
+  margin-bottom: 10px;
 `;
 
 const Spacer = styled.View`
   flex: 1;
 `;
 
-const OrWrapper = styled.View``;
-
-const KakaoLoginButton = styled.TouchableOpacity`
-  border-radius: 8px;
-  background-color: #f4e44e;
-  padding: 16px;
+const OrWrapper = styled.View`
   flex-direction: row;
+  margin-bottom: 20px;
 `;
 
-const GoogleLoginButton = styled.TouchableOpacity`
+const RowLine = styled.View`
+  align-self: center;
+  height: 1px;
+  background-color: ${colors.placeholder};
+  flex: 1;
+`;
+
+const OrText = styled.Text`
+  margin: 0 8px;
+  color: ${colors.placeholder};
+  font-family: 'NEXON Lv1 Gothic OTF Bold';
+  font-size: 14px;
+`;
+
+const KakaoLoginButton = styled(Button)`
+  background-color: #fee509;
+`;
+
+const GoogleLoginButton = styled(Button)`
   margin-top: 8px;
   background-color: #fff;
-  border-radius: 8px;
-  padding: 16px;
-  flex-direction: row;
-`;
-
-const SocialLoginText = styled.Text`
-  flex: 1;
-  text-align: center;
+  border: 1px solid ${colors.borderColor};
 `;
 
 export default () => {
@@ -99,13 +100,13 @@ export default () => {
   return (
     <Container>
       <Title>LOG IN</Title>
-      <TextInput
+      <FormInput
         value={email}
         onChangeText={setEmail}
         placeholder="이메일을 입력하세요"
         autoCapitalize="none"
       />
-      <TextInput
+      <FormInput
         value={pw}
         onChangeText={setPw}
         textContentType="password"
@@ -113,20 +114,26 @@ export default () => {
         placeholder="패스워드를 입력하세요"
         autoCapitalize="none"
       />
-      <LoginButton onPress={handleLogin}>
-        <LoginText>로그인</LoginText>
-      </LoginButton>
+      <Button onPress={handleLogin} text="로그인" />
 
       <Spacer />
 
-      <OrWrapper />
+      <OrWrapper>
+        <RowLine />
+        <OrText>또는</OrText>
+        <RowLine />
+      </OrWrapper>
 
-      <KakaoLoginButton onPress={kakaoLogin}>
-        <SocialLoginText>카카오톡으로 로그인</SocialLoginText>
-      </KakaoLoginButton>
-      <GoogleLoginButton onPress={googleLogin}>
-        <SocialLoginText>구글 계정으로 로그인</SocialLoginText>
-      </GoogleLoginButton>
+      <KakaoLoginButton
+        onPress={kakaoLogin}
+        text="카카오톡으로 로그인"
+        textColor="black"
+      />
+      <GoogleLoginButton
+        onPress={googleLogin}
+        text="구글 계정으로 로그인"
+        textColor="black"
+      />
     </Container>
   );
 };
