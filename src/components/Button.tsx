@@ -15,7 +15,7 @@ const Text = styled.Text<{ color?: string }>`
   text-align: center;
   font-family: 'NEXON Lv1 Gothic OTF Bold';
   font-size: 14px;
-  color: ${({ color }) => color || 'white'};
+  color: ${({ color }) => color ?? 'white'};
 `;
 
 const PrefixImage = styled.Image`

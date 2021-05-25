@@ -15,7 +15,7 @@ const TextInput: React.FC<TextInputProps> = ({ ...props }) => {
   return (
     <Container
       {...props}
-      placeholderTextColor={props.placeholderTextColor || colors.placeholder}
+      placeholderTextColor={props.placeholderTextColor ?? colors.placeholder}
     />
   );
 };
