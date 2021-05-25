@@ -6,11 +6,11 @@ import { GoogleSignin } from '@react-native-community/google-signin';
 import AsyncStorage from '@react-native-community/async-storage';
 import useAuth from '@src/hooks/user';
 import { reset } from '@src/router/navigator';
+import TextInput from '@src/components/TextInput';
 
 const Container = styled.View`
   flex: 1;
   padding: 20px;
-  background-color: #f2f2f2;
 `;
 
 const Title = styled.Text`
@@ -18,13 +18,8 @@ const Title = styled.Text`
   text-align: center;
   margin-top: 120px;
   margin-bottom: 16px;
-`;
-
-const TextInput = styled.TextInput`
-  background-color: white;
-  border-radius: 8px;
-  margin-bottom: 8px;
-  padding: 8px;
+  font-family: 'Road Rage';
+  font-size: 36px;
 `;
 
 const LoginButton = styled.TouchableOpacity`
