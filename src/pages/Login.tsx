@@ -10,6 +10,8 @@ import TextInput from '@src/components/TextInput';
 import Button from '@src/components/Button';
 import colors from '@src/constants/colors';
 import BackButton from '@src/components/BackButton';
+import googleIcon from '../assets/images/google.png';
+import kakaoIcon from '../assets/images/kakao.png';
 
 const Container = styled.View`
   flex: 1;
@@ -130,11 +132,13 @@ export default () => {
         onPress={kakaoLogin}
         text="카카오톡으로 로그인"
         textColor="black"
+        prefixImage={kakaoIcon}
       />
       <GoogleLoginButton
         onPress={googleLogin}
         text="구글 계정으로 로그인"
         textColor="black"
+        prefixImage={googleIcon}
       />
     </Container>
   );

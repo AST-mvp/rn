@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from '@emotion/native';
-import { TouchableOpacityProps } from 'react-native';
+import { ImageSourcePropType, TouchableOpacityProps } from 'react-native';
 
 const Container = styled.TouchableOpacity`
   background-color: black;
   border-radius: 5px;
   height: 50px;
+  align-items: center;
   justify-content: center;
+  flex-direction: row;
 `;
 
 const Text = styled.Text<{ color?: string }>`
@@ -16,19 +18,31 @@ const Text = styled.Text<{ color?: string }>`
   color: ${({ color }) => color || 'white'};
 `;
 
+const PrefixImage = styled.Image`
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 20px;
+`;
+
 interface ButtonProps {
   text?: string;
   textColor?: string;
+  prefixImage?: ImageSourcePropType;
 }
 
 const Button: React.FC<ButtonProps & TouchableOpacityProps> = ({
   text,
   textColor,
+  prefixImage,
   ...props
 }) => {
   return (
     <Container {...props}>
-      {text !== undefined && <Text color={textColor}>{text}</Text>}
+      <>
+        {prefixImage !== undefined && <PrefixImage source={prefixImage} />}
+        {text !== undefined && <Text color={textColor}>{text}</Text>}
+      </>
     </Container>
   );
 };
