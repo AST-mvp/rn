@@ -5,10 +5,11 @@ import api from '@src/api';
 import { GoogleSignin } from '@react-native-community/google-signin';
 import AsyncStorage from '@react-native-community/async-storage';
 import useAuth from '@src/hooks/user';
-import { reset } from '@src/router/navigator';
+import { back, reset } from '@src/router/navigator';
 import TextInput from '@src/components/TextInput';
 import Button from '@src/components/Button';
 import colors from '@src/constants/colors';
+import BackButton from '@src/components/BackButton';
 
 const Container = styled.View`
   flex: 1;
@@ -99,6 +100,7 @@ export default () => {
 
   return (
     <Container>
+      <BackButton onClick={back} />
       <Title>LOG IN</Title>
       <FormInput
         value={email}
