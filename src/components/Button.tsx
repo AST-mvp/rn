@@ -5,7 +5,8 @@ import { TouchableOpacityProps } from 'react-native';
 const Container = styled.TouchableOpacity`
   background-color: black;
   border-radius: 5px;
-  padding: 16px;
+  height: 50px;
+  justify-content: center;
 `;
 
 const Text = styled.Text<{ color?: string }>`
