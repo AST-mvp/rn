@@ -15,7 +15,10 @@ import Drop from '@src/pages/Drop';
 export default () => {
   return (
     <NavigationContainer ref={navigationRef}>
-      <Stack.Navigator initialRouteName="Root" headerMode="none">
+      <Stack.Navigator
+        initialRouteName="Root"
+        headerMode="none"
+        screenOptions={{ cardStyle: { backgroundColor: 'white' } }}>
         <Stack.Screen name="Root" component={Root} />
         <Stack.Screen name="Init" component={Init} />
         <Stack.Screen name="Main" component={Main} />

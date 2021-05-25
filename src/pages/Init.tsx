@@ -7,7 +7,6 @@ import colors from '@src/constants/colors';
 const Container = styled.View`
   flex: 1;
   padding: 20px;
-  background-color: #fff;
 `;
 
 const Title = styled.Text`
