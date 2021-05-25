@@ -3,6 +3,7 @@ import {
   NavigationContainerRef,
 } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createRef } from 'react';
 
 export type RootStackParamList = {
@@ -22,7 +23,17 @@ export type RootStackParamList = {
   TestArea: undefined;
 };
 
-const Stack = createStackNavigator<RootStackParamList>();
+export type MainTabParamList = {
+  Drop: undefined;
+  Search: undefined;
+  Verification: undefined;
+  MyCloset: undefined;
+  Profile: undefined;
+};
+
+export const Stack = createStackNavigator<RootStackParamList>();
+
+export const Tab = createBottomTabNavigator<MainTabParamList>();
 
 export const navigationRef = createRef<NavigationContainerRef>();
 
@@ -58,5 +69,3 @@ export const back = () => {
   }
   navigationRef.current.dispatch(CommonActions.goBack());
 };
-
-export default Stack;
