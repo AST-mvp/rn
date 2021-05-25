@@ -12,6 +12,7 @@ const Title = styled.Text`
   font-size: 60px;
   text-align: center;
   margin-top: 120px;
+  font-family: 'Road Rage';
 `;
 
 const SubTitle = styled.Text`
