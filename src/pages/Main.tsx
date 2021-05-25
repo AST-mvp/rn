@@ -1,6 +1,6 @@
 import React from 'react';
 import { navigate, reset } from '@src/router/navigator';
-import { Text, SafeAreaView } from 'react-native';
+import { Text } from 'react-native';
 import { setToken } from '@src/utils/auth';
 import styled from '@emotion/native';
 import useAuth from '@src/hooks/user';
@@ -30,7 +30,7 @@ export default () => {
   const handleTest = () => navigate('TestArea');
 
   return (
-    <SafeAreaView>
+    <>
       {user?.username === 'admin' && (
         <Button onPress={handleDrop}>
           <Text>Drop</Text>
@@ -45,6 +45,6 @@ export default () => {
       <Button onPress={handleLogout}>
         <Text>Logout</Text>
       </Button>
-    </SafeAreaView>
+    </>
   );
 };

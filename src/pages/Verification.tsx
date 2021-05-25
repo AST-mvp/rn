@@ -1,7 +1,7 @@
 import React from 'react';
 import { readNdef } from '@src/utils/nfc';
 import { useFocusEffect } from '@react-navigation/native';
-import { Button, Text, SafeAreaView } from 'react-native';
+import { Button, Text } from 'react-native';
 import { navigate } from '@src/router/navigator';
 
 export default () => {
@@ -17,6 +17,7 @@ export default () => {
       } catch {
         readTag();
       }
+      console.log('test');
     };
     readTag();
   });
@@ -24,9 +25,9 @@ export default () => {
   const handleTestButton = () => navigate('Detail', { nfcId: '1001' });
 
   return (
-    <SafeAreaView>
+    <>
       <Text>태그를 뒷면에 가져다 대세요.</Text>
       <Button title="test" onPress={handleTestButton} />
-    </SafeAreaView>
+    </>
   );
 };
