@@ -72,6 +72,7 @@ export default () => (
   <Tab.Navigator sceneContainerStyle={styles.tabSceneContainerStyle}>
     {tabBarList.map((page) => (
       <Tab.Screen
+        key={page.name}
         name={page.name}
         component={page.component}
         options={{
