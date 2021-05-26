@@ -1,5 +1,4 @@
 import React from 'react';
-import { Dimensions } from 'react-native';
 import 'react-native-gesture-handler';
 import styled from '@emotion/native';
 import { GoogleSignin } from '@react-native-community/google-signin';
@@ -7,8 +6,7 @@ import { GoogleSignin } from '@react-native-community/google-signin';
 import Router from './router';
 import { ProvideAuth } from './hooks/user';
 import useTheme, { ProvideTheme, Theme } from './hooks/theme';
-
-const { height: SCREEN_HEIGHT } = Dimensions.get('window');
+import { processColor, StatusBar, StatusBarStyle } from 'react-native';
 
 GoogleSignin.configure({
   webClientId:
@@ -17,41 +15,36 @@ GoogleSignin.configure({
     '51227550156-72gpdjmbedgn18n066r6g22a1kjp2k2m.apps.googleusercontent.com',
 });
 
-const BackContainer = styled.View<Theme>`
+const TopBackground = styled.SafeAreaView<Theme>`
+  flex: 0;
+  background-color: ${({ backgroundColor, topColor }) =>
+    topColor ?? backgroundColor};
+`;
+
+const BottomBackground = styled.SafeAreaView<Theme>`
   flex: 1;
-  background-color: ${({ backgroundColor }) => backgroundColor};
+  background-color: ${({ backgroundColor, bottomColor }) =>
+    bottomColor ?? backgroundColor};
 `;
 
-const TopBackground = styled.View<Theme>`
-  position: absolute;
-  width: 100%;
-  height: ${`${SCREEN_HEIGHT / 2}px`};
-  background-color: ${({ topColor }) => topColor};
-`;
-
-const BottomBackground = styled.View<Theme>`
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  height: ${`${SCREEN_HEIGHT / 2}px`};
-  background-color: ${({ bottomColor }) => bottomColor};
-`;
-
-const SafeAreaView = styled.SafeAreaView`
-  flex: 1;
-`;
+const getStatusBarColor = (theme: Theme): StatusBarStyle => {
+  const color = processColor(theme.topColor ?? theme.backgroundColor) ?? 0;
+  const numberColor = typeof color === 'number' ? color : 0;
+  // eslint-disable-next-line no-bitwise
+  return (numberColor & 0x909090) > 0 ? 'dark-content' : 'light-content';
+};
 
 const Container = () => {
   const { theme } = useTheme();
 
   return (
-    <BackContainer {...theme}>
+    <>
       <TopBackground {...theme} />
-      <BottomBackground {...theme} />
-      <SafeAreaView>
+      <StatusBar barStyle={getStatusBarColor(theme)} />
+      <BottomBackground {...theme}>
         <Router />
-      </SafeAreaView>
-    </BackContainer>
+      </BottomBackground>
+    </>
   );
 };
 
