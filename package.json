@@ -20,7 +20,6 @@
     "@react-native-firebase/analytics": "^11.4.1",
     "@react-native-firebase/app": "^11.4.1",
     "@react-native-firebase/crashlytics": "^11.4.1",
-    "@react-native-firebase/iid": "^11.4.1",
     "@react-native-firebase/in-app-messaging": "^11.4.1",
     "@react-native-firebase/messaging": "^11.4.1",
     "@react-native-seoul/kakao-login": "^2.10.2",

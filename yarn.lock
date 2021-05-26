@@ -1241,11 +1241,6 @@
   dependencies:
     stacktrace-js "^2.0.0"
 
-"@react-native-firebase/iid@^11.4.1":
-  version "11.4.1"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/iid/-/iid-11.4.1.tgz#2b0ea5bf0d8c97d121534fe5be64652f87f9a977"
-  integrity sha512-WS8SLsNgS7XqzsdJ0TNB9vG6YvSCdVM0+EIfPl797BO+fRNqA5DB/DUyN3cvNIlTd3CYzghEwBcyugJePI7Z1Q==
-
 "@react-native-firebase/in-app-messaging@^11.4.1":
   version "11.4.1"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/in-app-messaging/-/in-app-messaging-11.4.1.tgz#ee1a0bbf0c645723a5bca8deb0bf87cc4624269b"
