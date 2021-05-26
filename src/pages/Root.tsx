@@ -4,6 +4,7 @@ import useAuth from '@src/hooks/user';
 import { reset } from '@src/router/navigator';
 import { getToken } from '@src/utils/auth';
 import { useEffect } from 'react';
+import requestCloudMessaging from '@src/utils/requestCloudMessaging';
 
 const Container = styled.View`
   flex: 1;
@@ -22,6 +23,7 @@ export default () => {
   const { dispatchToken } = useAuth();
   useEffect(() => {
     (async () => {
+      await requestCloudMessaging();
       const token = await getToken();
       if (!token) {
         return reset('Init');
