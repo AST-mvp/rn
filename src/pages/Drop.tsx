@@ -1,70 +1,110 @@
-import styled from '@emotion/native';
-import { writeNdef } from '@src/utils/nfc';
 import React, { useState } from 'react';
-import { Button, Text, ToastAndroid } from 'react-native';
-import CheckBox from '@react-native-community/checkbox';
-import api from '@src/api';
-import useAuth from '@src/hooks/user';
+import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
+import DropItem from '@src/components/DropItem';
+import styled from '@emotion/native';
+import { StyleSheet } from 'react-native';
 
-const Row = styled.View`
-  flex-direction: row;
+const styles = StyleSheet.create({
+  indicator: {
+    backgroundColor: 'black',
+  },
+  tabbar: {
+    backgroundColor: 'white',
+  },
+});
+
+const HeaderContainer = styled.View`
+  height: 60px;
+  align-items: center;
 `;
 
-const TextInput = styled.TextInput`
-  border: 1px solid black;
-  flex: 1;
+const HeaderTitle = styled.Text`
+  font-size: 26px;
+  font-family: 'Road Rage';
 `;
 
-export default () => {
-  const { user } = useAuth();
-  const [nfcId, setNfcId] = useState('');
-  const [brandId, setBrandId] = useState('');
-  const [productId, setProductId] = useState('');
-  const [editionId, setEditionId] = useState('');
-  const [manufactureDate, setManufactureId] = useState('');
-  const [limited, setLimited] = useState(false);
+const Banner = styled.View`
+  background-color: #000;
+  height: 200px;
+`;
 
-  const handleDrop = async () => {
-    await writeNdef(nfcId);
-    await api.post('/products', {
-      nfcID: nfcId,
-      brandID: brandId,
-      productID: productId,
-      editionID: editionId,
-      manufactureDate: manufactureDate,
-      limited: limited,
-      ownerID: user?.userID,
-    });
-    ToastAndroid.show('done', ToastAndroid.SHORT);
-  };
-
+const Ongoing = () => {
   return (
     <>
-      <Row>
-        <Text>nfcId</Text>
-        <TextInput value={nfcId} onChangeText={setNfcId} />
-      </Row>
-      <Row>
-        <Text>brandId</Text>
-        <TextInput value={brandId} onChangeText={setBrandId} />
-      </Row>
-      <Row>
-        <Text>productId</Text>
-        <TextInput value={productId} onChangeText={setProductId} />
-      </Row>
-      <Row>
-        <Text>editionId</Text>
-        <TextInput value={editionId} onChangeText={setEditionId} />
-      </Row>
-      <Row>
-        <Text>manufactureDate</Text>
-        <TextInput value={manufactureDate} onChangeText={setManufactureId} />
-      </Row>
-      <Row>
-        <Text>limited</Text>
-        <CheckBox value={limited} onValueChange={setLimited} />
-      </Row>
-      <Button onPress={handleDrop} title="drop" />
+      <DropItem
+        logoImage={0}
+        productImage={0}
+        subtitle="에어 조던 1 KO"
+        title="Chicago"
+        description="5월 12일 오전 11시 출시 예정"
+        price={139000}
+        onClickNotify={() => {}}
+      />
+      <DropItem
+        logoImage={0}
+        productImage={0}
+        subtitle="에어 조던 1 KO"
+        title="Chicago"
+        description="5월 12일 오전 11시 출시 예정"
+        price={139000}
+        onClickNotify={() => {}}
+      />
+      <DropItem
+        logoImage={0}
+        productImage={0}
+        subtitle="에어 조던 1 KO"
+        title="Chicago"
+        description="5월 12일 오전 11시 출시 예정"
+        price={139000}
+        onClickNotify={() => {}}
+      />
+      <DropItem
+        logoImage={0}
+        productImage={0}
+        subtitle="에어 조던 1 KO"
+        title="Chicago"
+        description="5월 12일 오전 11시 출시 예정"
+        price={139000}
+        onClickNotify={() => {}}
+      />
     </>
   );
 };
+
+const Drop = () => {
+  const [index, setIndex] = useState(0);
+  return (
+    <>
+      <HeaderContainer>
+        <HeaderTitle>AST</HeaderTitle>
+      </HeaderContainer>
+      <Banner />
+      <TabView
+        renderTabBar={(props) => (
+          <TabBar
+            {...props}
+            activeColor="black"
+            inactiveColor="#b2b2b2"
+            indicatorStyle={styles.indicator}
+            style={styles.tabbar}
+          />
+        )}
+        navigationState={{
+          index,
+          routes: [
+            { key: 'ongoing', title: '진행 중' },
+            { key: 'ready', title: '발매 예정' },
+            { key: 'history', title: '지난 발매' },
+          ],
+        }}
+        onIndexChange={setIndex}
+        renderScene={SceneMap({
+          ongoing: Ongoing,
+          ready: Ongoing,
+          history: Ongoing,
+        })}
+      />
+    </>
+  );
+};
+export default Drop;
