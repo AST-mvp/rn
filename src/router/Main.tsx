@@ -77,7 +77,9 @@ export default () => {
   }, [changeTheme]);
 
   return (
-    <Tab.Navigator sceneContainerStyle={styles.tabSceneContainerStyle}>
+    <Tab.Navigator
+      sceneContainerStyle={styles.tabSceneContainerStyle}
+      lazy={false}>
       {tabBarList.map((page) => (
         <Tab.Screen
           key={page.name}

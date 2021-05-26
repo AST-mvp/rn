@@ -36,9 +36,7 @@ const LoginButton = styled(Button)`
 export default () => {
   const { resetTheme } = useTheme();
 
-  useEffect(() => {
-    resetTheme();
-  }, [resetTheme]);
+  useEffect(resetTheme, [resetTheme]);
 
   const handleLogin = () => navigate('Login');
 

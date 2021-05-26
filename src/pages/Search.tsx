@@ -1,5 +1,7 @@
 import styled from '@emotion/native';
-import React from 'react';
+import { useFocusEffect } from '@react-navigation/core';
+import useTheme from '@src/hooks/theme';
+import React, { useCallback } from 'react';
 import searchIcon from '../assets/images/search-outlined.png';
 
 const HeaderContainer = styled.View`
@@ -28,6 +30,17 @@ const SearchIcon = styled.Image`
 `;
 
 const Search = () => {
+  const { changeTheme, resetTheme } = useTheme();
+
+  useFocusEffect(
+    useCallback(() => {
+      changeTheme({
+        backgroundColor: 'white',
+        topColor: 'black',
+      });
+      return resetTheme;
+    }, [changeTheme, resetTheme]),
+  );
   return (
     <>
       <HeaderContainer>

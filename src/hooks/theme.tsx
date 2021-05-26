@@ -5,8 +5,10 @@ import React, {
   useReducer,
 } from 'react';
 
-interface Theme {
+export interface Theme {
   backgroundColor: string;
+  topColor?: string;
+  bottomColor?: string;
 }
 
 type ThemeDispatchAction =
@@ -17,20 +19,25 @@ const useProvideTheme = () => {
   const [theme, dispatchTheme] = useReducer(
     (state: Theme, action: ThemeDispatchAction): Theme => {
       if (action.type === 'reset') {
-        return { backgroundColor: 'white' };
+        return {
+          backgroundColor: 'white',
+          bottomColor: undefined,
+          topColor: undefined,
+        };
       }
       return {
         ...state,
         ...action,
       };
     },
-    { backgroundColor: '' },
+    { backgroundColor: 'white', bottomColor: undefined, topColor: undefined },
   );
 
   const resetTheme = useCallback(() => dispatchTheme({ type: 'reset' }), []);
 
   const changeTheme = useCallback(
-    (themeProps: Theme) => dispatchTheme({ type: 'change', ...themeProps }),
+    (themeProps: Partial<Theme>) =>
+      dispatchTheme({ type: 'change', ...themeProps }),
     [],
   );
 
