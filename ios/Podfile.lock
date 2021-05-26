@@ -466,11 +466,6 @@ PODS:
     - Firebase/Crashlytics (= 7.11.0)
     - React-Core
     - RNFBApp
-  - RNFBIid (11.4.1):
-    - Firebase/CoreOnly (= 7.11.0)
-    - FirebaseInstanceID
-    - React-Core
-    - RNFBApp
   - RNFBInAppMessaging (11.4.1):
     - Firebase/InAppMessaging (= 7.11.0)
     - React-Core
@@ -549,7 +544,6 @@ DEPENDENCIES:
   - "RNFBAnalytics (from `../node_modules/@react-native-firebase/analytics`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBCrashlytics (from `../node_modules/@react-native-firebase/crashlytics`)"
-  - "RNFBIid (from `../node_modules/@react-native-firebase/iid`)"
   - "RNFBInAppMessaging (from `../node_modules/@react-native-firebase/in-app-messaging`)"
   - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
@@ -662,8 +656,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBCrashlytics:
     :path: "../node_modules/@react-native-firebase/crashlytics"
-  RNFBIid:
-    :path: "../node_modules/@react-native-firebase/iid"
   RNFBInAppMessaging:
     :path: "../node_modules/@react-native-firebase/in-app-messaging"
   RNFBMessaging:
@@ -745,7 +737,6 @@ SPEC CHECKSUMS:
   RNFBAnalytics: 1190435dcd25d7403d28ceb4342c0d1e050843de
   RNFBApp: 996860ad6832996faba79ef3f6ec2d3ea5870dd9
   RNFBCrashlytics: 59d9ecfaacddbe10819d9071ee3b9921b79b8c6b
-  RNFBIid: 6003e884d8479e9d14ecbb6dbaa3939aaab40984
   RNFBInAppMessaging: 84a265c8ac2d4fbce01c13cd5d22946389c6926e
   RNFBMessaging: 8d84ceadc705ca6b6047c37376d2e2aaabcb8e3d
   RNGestureHandler: 9b7e605a741412e20e13c512738a31bd1611759b
