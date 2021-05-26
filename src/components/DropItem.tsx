@@ -1,11 +1,6 @@
 import React from 'react';
 import styled from '@emotion/native';
-import {
-  GestureResponderEvent,
-  Image,
-  ImageSourcePropType,
-  View,
-} from 'react-native';
+import { GestureResponderEvent, ImageSourcePropType, View } from 'react-native';
 import Button from './Button';
 
 const Container = styled.View`
