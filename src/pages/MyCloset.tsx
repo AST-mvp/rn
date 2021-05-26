@@ -1,8 +1,7 @@
 import styled from '@emotion/native';
-import { useFocusEffect } from '@react-navigation/core';
 import api from '@src/api';
 import { Product } from '@src/constants/types';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
 const ItemContainer = styled.View`
@@ -28,9 +27,9 @@ const Item: React.FC<Product> = ({ productID, brandID, manufactureDate }) => (
 
 export default () => {
   const [myCloset, setMyCloset] = useState<Product[]>([]);
-  useFocusEffect(() => {
+  useEffect(() => {
     api.get('/closet').then((res) => setMyCloset(res.data.result));
-  });
+  }, []);
 
   return (
     <FlatList
