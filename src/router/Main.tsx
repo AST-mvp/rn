@@ -1,9 +1,9 @@
 import React from 'react';
-import Drop from '@src/pages/Drop';
-import { MainTabParamList, Tab } from './navigator';
+import { Image, ImageSourcePropType, StyleSheet } from 'react-native';
+import useAuth from '@src/hooks/user';
+import AdminDrop from '@src/pages/AdminDrop';
 import MyCloset from '@src/pages/MyCloset';
 import Verification from '@src/pages/Verification';
-import { Image, ImageSourcePropType, StyleSheet } from 'react-native';
 import Profile from '@src/pages/Profile';
 import Search from '@src/pages/Search';
 
@@ -15,6 +15,8 @@ import myclosetActiveIcon from '../assets/images/closet-filled.png';
 import myclosetInactiveIcon from '../assets/images/closet-outlined.png';
 import profileActiveIcon from '../assets/images/profile-filled.png';
 import profileInactiveIcon from '../assets/images/profile-outlined.png';
+import { MainTabParamList, Tab } from './navigator';
+import Drop from '@src/pages/Drop';
 
 const styles = StyleSheet.create({
   tabSceneContainerStyle: {

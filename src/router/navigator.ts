@@ -10,9 +10,6 @@ export type RootStackParamList = {
   Root: undefined;
   Init: undefined;
   Main: undefined;
-  Drop: undefined;
-  Verification: undefined;
-  MyCloset: undefined;
   Detail: {
     nfcId: string;
   };
@@ -21,6 +18,7 @@ export type RootStackParamList = {
   };
   Login: undefined;
   TestArea: undefined;
+  AdminDrop: undefined;
 };
 
 export type MainTabParamList = {
