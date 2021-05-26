@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from '@emotion/native';
 import { navigate } from '@src/router/navigator';
 import Button from '@src/components/Button';
 import colors from '@src/constants/colors';
+import useTheme from '@src/hooks/theme';
 
 const Container = styled.View`
   flex: 1;
@@ -33,6 +34,12 @@ const LoginButton = styled(Button)`
 `;
 
 export default () => {
+  const { resetTheme } = useTheme();
+
+  useEffect(() => {
+    resetTheme();
+  }, [resetTheme]);
+
   const handleLogin = () => navigate('Login');
 
   const handleRegister = () => {};

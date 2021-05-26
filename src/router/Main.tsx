@@ -1,7 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Image, ImageSourcePropType, StyleSheet } from 'react-native';
-import useAuth from '@src/hooks/user';
-import AdminDrop from '@src/pages/AdminDrop';
 import MyCloset from '@src/pages/MyCloset';
 import Verification from '@src/pages/Verification';
 import Profile from '@src/pages/Profile';
@@ -17,6 +15,7 @@ import profileActiveIcon from '../assets/images/profile-filled.png';
 import profileInactiveIcon from '../assets/images/profile-outlined.png';
 import { MainTabParamList, Tab } from './navigator';
 import Drop from '@src/pages/Drop';
+import useTheme from '@src/hooks/theme';
 
 const styles = StyleSheet.create({
   tabSceneContainerStyle: {
@@ -70,28 +69,36 @@ const tabBarList: {
   },
 ];
 
-export default () => (
-  <Tab.Navigator sceneContainerStyle={styles.tabSceneContainerStyle}>
-    {tabBarList.map((page) => (
-      <Tab.Screen
-        key={page.name}
-        name={page.name}
-        component={page.component}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <Image
-              source={focused ? page.activeIcon : page.inactiveIcon}
-              style={
-                page.name !== 'Verification'
-                  ? styles.defaultIcon
-                  : styles.verificationIcon
-              }
-              resizeMode="contain"
-            />
-          ),
-          tabBarLabel: page.name === 'Verification' ? '' : undefined,
-        }}
-      />
-    ))}
-  </Tab.Navigator>
-);
+export default () => {
+  const { changeTheme } = useTheme();
+
+  useEffect(() => {
+    changeTheme({ backgroundColor: 'white' });
+  }, [changeTheme]);
+
+  return (
+    <Tab.Navigator sceneContainerStyle={styles.tabSceneContainerStyle}>
+      {tabBarList.map((page) => (
+        <Tab.Screen
+          key={page.name}
+          name={page.name}
+          component={page.component}
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <Image
+                source={focused ? page.activeIcon : page.inactiveIcon}
+                style={
+                  page.name !== 'Verification'
+                    ? styles.defaultIcon
+                    : styles.verificationIcon
+                }
+                resizeMode="contain"
+              />
+            ),
+            tabBarLabel: page.name === 'Verification' ? '' : undefined,
+          }}
+        />
+      ))}
+    </Tab.Navigator>
+  );
+};

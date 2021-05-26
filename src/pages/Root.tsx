@@ -5,6 +5,7 @@ import { reset } from '@src/router/navigator';
 import { getToken } from '@src/utils/auth';
 import { useEffect } from 'react';
 import requestCloudMessaging from '@src/utils/requestCloudMessaging';
+import useTheme from '@src/hooks/theme';
 
 const Container = styled.View`
   flex: 1;
@@ -21,6 +22,12 @@ const Title = styled.Text`
 
 export default () => {
   const { dispatchToken } = useAuth();
+  const { changeTheme } = useTheme();
+
+  useEffect(() => {
+    changeTheme({ backgroundColor: 'black' });
+  }, [changeTheme]);
+
   useEffect(() => {
     (async () => {
       await requestCloudMessaging();

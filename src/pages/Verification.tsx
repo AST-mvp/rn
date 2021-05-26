@@ -1,26 +1,37 @@
-import React from 'react';
-import { readNdef } from '@src/utils/nfc';
+import React, { useCallback } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 import { Button, Text } from 'react-native';
 import { navigate } from '@src/router/navigator';
+import useTheme from '@src/hooks/theme';
 
 export default () => {
-  useFocusEffect(() => {
-    const readTag = async () => {
-      try {
-        const nfcId = await readNdef();
-        if (!nfcId) {
-          readTag();
-          return;
-        }
-        navigate('Detail', { nfcId });
-      } catch {
-        readTag();
-      }
-      console.log('test');
-    };
-    readTag();
-  });
+  const { changeTheme, resetTheme } = useTheme();
+
+  useFocusEffect(
+    useCallback(() => {
+      changeTheme({ backgroundColor: 'black' });
+      return () => {
+        console.log('sssssss');
+        resetTheme();
+      };
+    }, [changeTheme, resetTheme]),
+  );
+  // useFocusEffect(() => {
+  //   const readTag = async () => {
+  //     try {
+  //       const nfcId = await readNdef();
+  //       if (!nfcId) {
+  //         readTag();
+  //         return;
+  //       }
+  //       navigate('Detail', { nfcId });
+  //     } catch {
+  //       readTag();
+  //     }
+  //     console.log('test');
+  //   };
+  //   readTag();
+  // });
 
   const handleTestButton = () => navigate('Detail', { nfcId: '1001' });
 

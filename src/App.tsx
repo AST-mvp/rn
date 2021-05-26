@@ -4,6 +4,7 @@ import { GoogleSignin } from '@react-native-community/google-signin';
 
 import Router from './router';
 import { ProvideAuth } from './hooks/user';
+import useTheme, { ProvideTheme } from './hooks/theme';
 import styled from '@emotion/native';
 
 GoogleSignin.configure({
@@ -13,15 +14,25 @@ GoogleSignin.configure({
     '51227550156-72gpdjmbedgn18n066r6g22a1kjp2k2m.apps.googleusercontent.com',
 });
 
-const SafeAreaView = styled.SafeAreaView`
+const SafeAreaView = styled.SafeAreaView<{ color: string }>`
   flex: 1;
-  background-color: transparent;
+  background-color: ${({ color }) => color};
 `;
 
-export default () => (
-  <SafeAreaView>
-    <ProvideAuth>
+const Container = () => {
+  const { theme } = useTheme();
+
+  return (
+    <SafeAreaView color={theme.backgroundColor}>
       <Router />
-    </ProvideAuth>
-  </SafeAreaView>
+    </SafeAreaView>
+  );
+};
+
+export default () => (
+  <ProvideAuth>
+    <ProvideTheme>
+      <Container />
+    </ProvideTheme>
+  </ProvideAuth>
 );
