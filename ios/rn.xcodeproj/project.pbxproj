@@ -28,6 +28,7 @@
 		89B13538AD94B301F12041BB /* libPods-rn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4673DB2B69BEDF6DD01F00DD /* libPods-rn.a */; };
 		AA39EC0DED46EDE52D1FF866 /* libPods-rn-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75C6B518F063FA4462E202AB /* libPods-rn-tvOS.a */; };
 		B8A63B791E2B4836913EC916 /* Gong Gothic OTF Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4FA1ABBE6CF94ABA9E98ACC1 /* Gong Gothic OTF Medium.otf */; };
+		C1562847326E45DAAEF8B1D1 /* NEXON Lv1 Gothic OTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = 15D4348AAB714724834D2BA7 /* NEXON Lv1 Gothic OTF.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F0BE89C8AD07FCBBFB889517 /* Pods-rn-rnTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn-rnTests.debug.xcconfig"; path = "Target Support Files/Pods-rn-rnTests/Pods-rn-rnTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4FA1ABBE6CF94ABA9E98ACC1 /* Gong Gothic OTF Medium.otf */ = {isa = PBXFileReference; name = "Gong Gothic OTF Medium.otf"; path = "../src/assets/fonts/Gong Gothic OTF Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		15D4348AAB714724834D2BA7 /* NEXON Lv1 Gothic OTF.otf */ = {isa = PBXFileReference; name = "NEXON Lv1 Gothic OTF.otf"; path = "../src/assets/fonts/NEXON Lv1 Gothic OTF.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 				BC443B596696427DBD3B6CB2 /* NEXON Lv1 Gothic OTF Bold.otf */,
 				D5D0A67185A548609B2EB730 /* NanumSquareBold.ttf */,
 				4FA1ABBE6CF94ABA9E98ACC1 /* Gong Gothic OTF Medium.otf */,
+				15D4348AAB714724834D2BA7 /* NEXON Lv1 Gothic OTF.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				5BD5CB88265D141D00A25B95 /* A SIMPLE TAG.png in Resources */,
 				79400C8ADE23495F8E700F54 /* NanumSquareBold.ttf in Resources */,
 				B8A63B791E2B4836913EC916 /* Gong Gothic OTF Medium.otf in Resources */,
+				C1562847326E45DAAEF8B1D1 /* NEXON Lv1 Gothic OTF.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
