@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
 const HeaderContainer = styled.View`
   height: 60px;
   align-items: center;
+  justify-content: center;
 `;
 
 const HeaderTitle = styled.Text`
