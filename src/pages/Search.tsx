@@ -1,7 +1,8 @@
 import styled from '@emotion/native';
 import { useFocusEffect } from '@react-navigation/core';
+import { Alert } from 'react-native'
 import useTheme from '@src/hooks/theme';
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import searchIcon from '../assets/images/search-outlined.png';
 
 const HeaderContainer = styled.View`
@@ -31,6 +32,7 @@ const SearchIcon = styled.Image`
 
 const Search = () => {
   const { changeTheme, resetTheme } = useTheme();
+  const [ searchData, setSearchData ] = useState("");
 
   useFocusEffect(
     useCallback(() => {
@@ -41,11 +43,17 @@ const Search = () => {
       return resetTheme;
     }, [changeTheme, resetTheme]),
   );
+
+
   return (
     <>
       <HeaderContainer>
         <SearchContainer>
-          <TextInput />
+          <TextInput 
+            value={searchData}
+            onChangeText={(searchData) => setSearchData(searchData)}
+            placeholder={'검색어를 입력해주세요.'}
+          />
           <SearchIcon source={searchIcon} />
         </SearchContainer>
       </HeaderContainer>
