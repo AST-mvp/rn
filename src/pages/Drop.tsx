@@ -11,6 +11,9 @@ const styles = StyleSheet.create({
   tabbar: {
     backgroundColor: 'white',
   },
+  label: {
+    fontWeight: 'bold',
+  },
 });
 
 const HeaderContainer = styled.View`
@@ -27,6 +30,7 @@ const Banner = styled.View`
   background-color: #000;
   height: 200px;
 `;
+
 
 const Ongoing = () => {
   return (
@@ -88,6 +92,7 @@ const Drop = () => {
             inactiveColor="#b2b2b2"
             indicatorStyle={styles.indicator}
             style={styles.tabbar}
+            labelStyle={styles.label}
           />
         )}
         navigationState={{
