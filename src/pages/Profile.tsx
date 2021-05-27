@@ -33,11 +33,11 @@ const Profile = () => {
   return (
     <Container>
       <LogOut>
-        <Button onPress={handleLogout} text="logout" />
+        <Button onPress={handleLogout} text="로그아웃" />
       </LogOut>
       <AdminDrop>
         {user?.username === 'admin' && (
-        <Button onPress={handleAdminDrop} text="admin drop" />
+        <Button onPress={handleAdminDrop} text="Admin Drop" />
         )}
       </AdminDrop>
     </Container>
