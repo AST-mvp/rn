@@ -44,13 +44,14 @@ const Search = () => {
     }, [changeTheme, resetTheme]),
   );
 
+
   return (
     <>
       <HeaderContainer>
         <SearchContainer>
           <TextInput 
             value={searchData}
-            onChangeText={setSearchData}
+            onChangeText={(searchData) => setSearchData(searchData)}
             placeholder={'검색어를 입력해주세요.'}
           />
           <SearchIcon source={searchIcon} />
