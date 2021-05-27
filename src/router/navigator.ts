@@ -22,7 +22,7 @@ export type RootStackParamList = {
 };
 
 export type MainTabParamList = {
-  Drop: undefined;
+  Drops: undefined;
   Search: undefined;
   Verification: undefined;
   MyCloset: undefined;

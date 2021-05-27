@@ -14,7 +14,7 @@ import myclosetInactiveIcon from '../assets/images/closet-outlined.png';
 import profileActiveIcon from '../assets/images/profile-filled.png';
 import profileInactiveIcon from '../assets/images/profile-outlined.png';
 import { MainTabParamList, Tab } from './navigator';
-import Drop from '@src/pages/Drop';
+import Drop from '@src/pages/Drops';
 import useTheme from '@src/hooks/theme';
 
 const styles = StyleSheet.create({
@@ -38,7 +38,7 @@ const tabBarList: {
   inactiveIcon: ImageSourcePropType;
 }[] = [
   {
-    name: 'Drop',
+    name: 'Drops',
     component: Drop,
     activeIcon: dropActiveIcon,
     inactiveIcon: dropInactiveIcon,
