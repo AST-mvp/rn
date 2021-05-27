@@ -9,6 +9,7 @@ import useTheme from '@src/hooks/theme';
 
 const Container = styled.View`
   flex: 1;
+  justify-content: space-between;
   background-color: black;
 `;
 
@@ -16,8 +17,16 @@ const Title = styled.Text`
   color: white;
   font-size: 60px;
   text-align: center;
-  margin-top: 120px;
+  margin-top: 220px;
   font-family: 'Road Rage';
+`;
+
+const SubTitle = styled.Text`
+  color: white;
+  font-size: 15px;
+  text-align: center;
+  margin-bottom: 60px;
+  font-family: 'paybooc OTF Bold';
 `;
 
 export default () => {
@@ -33,7 +42,10 @@ export default () => {
       await requestCloudMessaging();
       const token = await getToken();
       if (!token) {
-        return reset('Init');
+        setTimeout(() => {
+          reset('Init');
+        }, 1000);
+        return;
       }
       dispatchToken({ type: 'update', token: token.token });
       return reset('Main');
@@ -42,6 +54,7 @@ export default () => {
   return (
     <Container>
       <Title>AST</Title>
+      <SubTitle>A SIMPLE TAG</SubTitle>
     </Container>
   );
 };
