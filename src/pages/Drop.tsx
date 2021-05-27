@@ -3,6 +3,8 @@ import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import DropItem from '@src/components/DropItem';
 import styled from '@emotion/native';
 import { StyleSheet } from 'react-native';
+import logoImage from '../assets/images/logoImageTemp.png';
+import productImage from '../assets/images/productImageTemp.png';
 
 const styles = StyleSheet.create({
   indicator: {
@@ -36,8 +38,8 @@ const Ongoing = () => {
   return (
     <>
       <DropItem
-        logoImage={0}
-        productImage={0}
+        logoImage={logoImage}
+        productImage={productImage}
         subtitle="에어 조던 1 KO"
         title="Chicago"
         description="5월 12일 오전 11시 출시 예정"
