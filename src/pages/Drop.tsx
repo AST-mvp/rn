@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import DropItem from '@src/components/DropItem';
 import styled from '@emotion/native';
-import { StyleSheet } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
+import { useFocusEffect } from '@react-navigation/core';
+import api from '@src/api';
+import { Product } from '@src/constants/types';
 
 const styles = StyleSheet.create({
   indicator: {
@@ -29,45 +32,30 @@ const Banner = styled.View`
 `;
 
 const Ongoing = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useFocusEffect(
+    useCallback(() => {
+      api.get('/products').then((res) => setProducts(res.data.products));
+    }, []),
+  );
+
   return (
-    <>
-      <DropItem
-        logoImage={0}
-        productImage={0}
-        subtitle="에어 조던 1 KO"
-        title="Chicago"
-        description="5월 12일 오전 11시 출시 예정"
-        price={139000}
-        onClickNotify={() => {}}
-      />
-      <DropItem
-        logoImage={0}
-        productImage={0}
-        subtitle="에어 조던 1 KO"
-        title="Chicago"
-        description="5월 12일 오전 11시 출시 예정"
-        price={139000}
-        onClickNotify={() => {}}
-      />
-      <DropItem
-        logoImage={0}
-        productImage={0}
-        subtitle="에어 조던 1 KO"
-        title="Chicago"
-        description="5월 12일 오전 11시 출시 예정"
-        price={139000}
-        onClickNotify={() => {}}
-      />
-      <DropItem
-        logoImage={0}
-        productImage={0}
-        subtitle="에어 조던 1 KO"
-        title="Chicago"
-        description="5월 12일 오전 11시 출시 예정"
-        price={139000}
-        onClickNotify={() => {}}
-      />
-    </>
+    <FlatList
+      data={products}
+      listKey="nfcID"
+      renderItem={({ item }) => (
+        <DropItem
+          logoImage={0}
+          productImage={0}
+          subtitle="에어 조던 1 KO"
+          title={item.productID}
+          description="5월 12일 오전 11시 출시 예정"
+          price={139000}
+          onClickNotify={() => {}}
+        />
+      )}
+    />
   );
 };
 
