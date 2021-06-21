@@ -6,6 +6,8 @@ import { FlatList, StyleSheet } from 'react-native';
 import { useFocusEffect } from '@react-navigation/core';
 import api from '@src/api';
 import { Product } from '@src/constants/types';
+import logoImage from '../assets/images/logoImageTemp.png';
+import productImage from '../assets/images/productImageTemp.png';
 
 const styles = StyleSheet.create({
   indicator: {
@@ -13,6 +15,9 @@ const styles = StyleSheet.create({
   },
   tabbar: {
     backgroundColor: 'white',
+  },
+  label: {
+    fontWeight: 'bold',
   },
 });
 
@@ -47,8 +52,8 @@ const Ongoing = () => {
       listKey="nfcID"
       renderItem={({ item }) => (
         <DropItem
-          logoImage={0}
-          productImage={0}
+          logoImage={logoImage}
+          productImage={productImage}
           subtitle="에어 조던 1 KO"
           title={item.productID}
           description="5월 12일 오전 11시 출시 예정"
@@ -77,6 +82,7 @@ const Drop = () => {
             inactiveColor="#b2b2b2"
             indicatorStyle={styles.indicator}
             style={styles.tabbar}
+            labelStyle={styles.label}
           />
         )}
         navigationState={{
