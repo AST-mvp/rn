@@ -1,7 +1,7 @@
 import { getToken } from '@src/utils/auth';
 import axios from 'axios';
 
-const baseURL = 'https://d0hwq1.xyz/';
+const baseURL = 'http://d0hwq1.xyz:10005';
 
 const api = axios.create({
   baseURL,
