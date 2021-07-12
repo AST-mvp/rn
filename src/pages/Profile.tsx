@@ -11,11 +11,11 @@ const Container = styled.View`
 `;
 
 const LogOut = styled.View`
-  marginTop: 160%;
+  margin-top: 160%;
 `;
 
 const AdminDrop = styled.View`
-  marginTop: 1.5%;
+  margin-top: 1.5%;
 `;
 
 const Profile = () => {
@@ -37,7 +37,7 @@ const Profile = () => {
       </LogOut>
       <AdminDrop>
         {user?.username === 'admin' && (
-        <Button onPress={handleAdminDrop} text="Admin Drop" />
+          <Button onPress={handleAdminDrop} text="Admin Drop" />
         )}
       </AdminDrop>
     </Container>
