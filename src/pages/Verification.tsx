@@ -40,14 +40,15 @@ const InfoText = styled.Text`
 `;
 
 const StatusWrapper = styled.View`
-  justify-content: flex-end;
-  flex: 1;
+  position: absolute;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
 `;
 
 const StatusImage = styled.Image`
   height: 320px;
   width: 320px;
-  margin-bottom: 200px;
 `;
 
 type Status = 'ready' | 'done' | 'fail';
@@ -86,11 +87,11 @@ const StatusIcon: React.FC<{ status: Status }> = ({ status }) => (
 
 export default () => {
   const { changeTheme, resetTheme } = useTheme();
-  const [status, setStatus] = useState<Status>('ready');
+  const [status, setStatus] = useState<Status>('done');
 
   useFocusEffect(
     useCallback(() => {
-      setStatus('ready');
+      setStatus('fail');
       changeTheme({ backgroundColor: 'black', bottomColor: 'white' });
       return resetTheme;
     }, [changeTheme, resetTheme]),
