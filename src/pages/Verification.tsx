@@ -96,22 +96,23 @@ export default () => {
     }, [changeTheme, resetTheme]),
   );
 
-  useFocusEffect(() => {
-    const readTag = async () => {
-      try {
-        const nfcId = await readNdef();
-        if (!nfcId) {
+  useFocusEffect(
+    useCallback(() => {
+      const readTag = async () => {
+        try {
+          const nfcId = await readNdef();
+          if (!nfcId) {
+            readTag();
+            return;
+          }
+          navigate('Detail', { nfcId });
+        } catch {
           readTag();
-          return;
         }
-        navigate('Detail', { nfcId });
-      } catch {
-        readTag();
-      }
-      console.log('test');
-    };
-    readTag();
-  });
+      };
+      readTag();
+    }, []),
+  );
 
   return (
     <Container>
