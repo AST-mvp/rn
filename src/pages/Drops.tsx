@@ -6,8 +6,8 @@ import { FlatList, StyleSheet } from 'react-native';
 import { useFocusEffect } from '@react-navigation/core';
 import api from '@src/api';
 import { Product } from '@src/constants/types';
-import logoImage from '../assets/images/logoImageTemp.png';
-import productImage from '../assets/images/productImageTemp.png';
+import logoImage from '../assets/images/logoImageTemp.jpg';
+import productImage from '../assets/images/productImageTemp.jpg';
 
 const styles = StyleSheet.create({
   indicator: {
