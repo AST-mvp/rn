@@ -50,6 +50,7 @@ const Ongoing = () => {
     <FlatList
       data={products}
       listKey="nfcID"
+      keyExtractor={(item) => item.nfcID}
       renderItem={({ item }) => (
         <DropItem
           logoImage={logoImage}
