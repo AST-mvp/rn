@@ -8,19 +8,21 @@ import alertOutlined from '../assets/images/alert-outlined.png';
 import readyVerificationImage from '../assets/images/verification-ready.png';
 import doneVerificationImage from '../assets/images/verification-done.png';
 import failVerificationImage from '../assets/images/verification-fail.png';
+import retryIcon from '../assets/images/retry-outlined.png';
 import { readNdef } from '@src/utils/nfc';
 
 const Container = styled.View`
   background-color: black;
   flex: 1;
   align-items: center;
+  padding: 80px 0;
 `;
 
 const StatusText = styled.Text`
   font-family: 'NEXON Lv1 Gothic OTF Bold';
   font-size: 16px;
   color: white;
-  margin: 100px 0 15px;
+  margin: 15px 0;
 `;
 
 const InfoContainer = styled.View`
@@ -51,9 +53,20 @@ const StatusImage = styled.Image`
   width: 320px;
 `;
 
-const RetryContainer = styled.View``;
+const RetryContainer = styled.TouchableOpacity`
+  margin-top: auto;
+  align-items: center;
+`;
 
-const RetryText = styled.Text``;
+const RetryIcon = styled.Image`
+  width: 20px;
+  height: 20px;
+  margin-bottom: 12px;
+`;
+
+const RetryText = styled.Text`
+  color: white;
+`;
 
 type Status = 'ready' | 'done' | 'fail';
 
@@ -93,41 +106,29 @@ export default () => {
   const { changeTheme, resetTheme } = useTheme();
   const [status, setStatus] = useState<Status>('ready');
 
-  useFocusEffect(
-    useCallback(() => {
+  const readTag = useCallback(() => {
+    (async () => {
       setStatus('ready');
-      changeTheme({ backgroundColor: 'black', bottomColor: 'white' });
-      return resetTheme;
-    }, [changeTheme, resetTheme]),
-  );
+      try {
+        const nfcId = await readNdef();
+        if (!nfcId) {
+          readTag();
+          return;
+        }
+        setStatus('done');
+        navigate('Detail', { nfcId });
+      } catch {
+        setStatus('fail');
+      }
+    })();
+  }, []);
 
   useFocusEffect(
     useCallback(() => {
-      let canceled = false;
-      const readTag = async () => {
-        try {
-          const nfcId = await readNdef();
-          if (!nfcId) {
-            readTag();
-            return;
-          }
-          if (canceled) {
-            return;
-          }
-          setStatus('done');
-          navigate('Detail', { nfcId });
-        } catch {
-          if (canceled) {
-            return;
-          }
-          setStatus('fail');
-        }
-      };
       readTag();
-      return () => {
-        canceled = true;
-      };
-    }, []),
+      changeTheme({ backgroundColor: 'black', bottomColor: 'white' });
+      return resetTheme;
+    }, [changeTheme, readTag, resetTheme]),
   );
 
   return (
@@ -143,7 +144,8 @@ export default () => {
         <StatusIcon status={status} />
       </StatusWrapper>
       {status === 'fail' && (
-        <RetryContainer>
+        <RetryContainer onPress={readTag}>
+          <RetryIcon source={retryIcon} />
           <RetryText>다시 시도하기</RetryText>
         </RetryContainer>
       )}
