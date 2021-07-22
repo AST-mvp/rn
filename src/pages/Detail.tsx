@@ -25,7 +25,7 @@ export default ({
   useEffect(() => {
     api
       .get(`/products/${nfcId}`)
-      .then(({ data }) => setProduct(data.result))
+      .then(({ data }) => setProduct(data.products))
       .catch(() => setProduct(null));
   }, [nfcId]);
 
