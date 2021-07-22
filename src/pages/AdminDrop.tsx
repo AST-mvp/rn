@@ -1,18 +1,22 @@
 import styled from '@emotion/native';
 import { writeNdef } from '@src/utils/nfc';
 import React, { useState } from 'react';
-import { Button, Text, ToastAndroid } from 'react-native';
+import { Button, ToastAndroid } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import api from '@src/api';
 import useAuth from '@src/hooks/user';
 
 const Row = styled.View`
   flex-direction: row;
+  justify-content: space-between;
+  margin: 8px;
 `;
+
+const Label = styled.Text``;
 
 const TextInput = styled.TextInput`
   border: 1px solid black;
-  flex: 1;
+  flex: 0 0 70%;
 `;
 
 export default () => {
@@ -41,27 +45,27 @@ export default () => {
   return (
     <>
       <Row>
-        <Text>nfcId</Text>
+        <Label>nfcId</Label>
         <TextInput value={nfcId} onChangeText={setNfcId} />
       </Row>
       <Row>
-        <Text>brandId</Text>
+        <Label>brandId</Label>
         <TextInput value={brandId} onChangeText={setBrandId} />
       </Row>
       <Row>
-        <Text>productId</Text>
+        <Label>productId</Label>
         <TextInput value={productId} onChangeText={setProductId} />
       </Row>
       <Row>
-        <Text>editionId</Text>
+        <Label>editionId</Label>
         <TextInput value={editionId} onChangeText={setEditionId} />
       </Row>
       <Row>
-        <Text>manufactureDate</Text>
+        <Label>manufactureDate</Label>
         <TextInput value={manufactureDate} onChangeText={setManufactureId} />
       </Row>
       <Row>
-        <Text>limited</Text>
+        <Label>limited</Label>
         <CheckBox value={limited} onValueChange={setLimited} />
       </Row>
       <Button onPress={handleDrop} title="drop" />
