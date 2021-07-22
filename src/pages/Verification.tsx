@@ -3,6 +3,7 @@ import { useFocusEffect } from '@react-navigation/native';
 import { navigate } from '@src/router/navigator';
 import useTheme from '@src/hooks/theme';
 import styled from '@emotion/native';
+import nfcManager from 'react-native-nfc-manager';
 
 import alertOutlined from '../assets/images/alert-outlined.png';
 import readyVerificationImage from '../assets/images/verification-ready.png';
@@ -126,9 +127,15 @@ export default () => {
   useFocusEffect(
     useCallback(() => {
       readTag();
+      return nfcManager.cancelTechnologyRequest;
+    }, [readTag]),
+  );
+
+  useFocusEffect(
+    useCallback(() => {
       changeTheme({ backgroundColor: 'black', bottomColor: 'white' });
       return resetTheme;
-    }, [changeTheme, readTag, resetTheme]),
+    }, [changeTheme, resetTheme]),
   );
 
   return (
