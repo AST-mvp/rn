@@ -19,5 +19,4 @@ export const writeNdef = async (data: string) => {
   await nfcManager.requestTechnology(NfcTech.Ndef);
   const bytes = Ndef.encodeMessage([Ndef.textRecord(data)]);
   await nfcManager.writeNdefMessage(bytes);
-  await nfcManager.cancelTechnologyRequest();
 };
