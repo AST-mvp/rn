@@ -51,6 +51,10 @@ const StatusImage = styled.Image`
   width: 320px;
 `;
 
+const RetryContainer = styled.View``;
+
+const RetryText = styled.Text``;
+
 type Status = 'ready' | 'done' | 'fail';
 
 const getStatusText = (status: Status) => {
@@ -91,6 +95,7 @@ export default () => {
 
   useFocusEffect(
     useCallback(() => {
+      setStatus('ready');
       changeTheme({ backgroundColor: 'black', bottomColor: 'white' });
       return resetTheme;
     }, [changeTheme, resetTheme]),
@@ -137,6 +142,11 @@ export default () => {
       <StatusWrapper>
         <StatusIcon status={status} />
       </StatusWrapper>
+      {status === 'fail' && (
+        <RetryContainer>
+          <RetryText>다시 시도하기</RetryText>
+        </RetryContainer>
+      )}
     </Container>
   );
 };
