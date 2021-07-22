@@ -87,11 +87,10 @@ const StatusIcon: React.FC<{ status: Status }> = ({ status }) => (
 
 export default () => {
   const { changeTheme, resetTheme } = useTheme();
-  const [status, setStatus] = useState<Status>('done');
+  const [status, setStatus] = useState<Status>('ready');
 
   useFocusEffect(
     useCallback(() => {
-      setStatus('fail');
       changeTheme({ backgroundColor: 'black', bottomColor: 'white' });
       return resetTheme;
     }, [changeTheme, resetTheme]),
@@ -99,6 +98,7 @@ export default () => {
 
   useFocusEffect(
     useCallback(() => {
+      let canceled = false;
       const readTag = async () => {
         try {
           const nfcId = await readNdef();
@@ -106,12 +106,22 @@ export default () => {
             readTag();
             return;
           }
+          if (canceled) {
+            return;
+          }
+          setStatus('done');
           navigate('Detail', { nfcId });
         } catch {
-          readTag();
+          if (canceled) {
+            return;
+          }
+          setStatus('fail');
         }
       };
       readTag();
+      return () => {
+        canceled = true;
+      };
     }, []),
   );
 
