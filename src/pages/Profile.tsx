@@ -10,12 +10,10 @@ const Container = styled.View`
   padding: 20px;
 `;
 
-const LogOut = styled.View`
-  margin-top: 160%;
-`;
+const LogOut = styled.View``;
 
 const AdminDrop = styled.View`
-  margin-top: 1.5%;
+  margin-top: 20px;
 `;
 
 const Profile = () => {
