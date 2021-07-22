@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import LottieView from 'lottie-react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { navigate } from '@src/router/navigator';
 import useTheme from '@src/hooks/theme';
@@ -47,6 +48,11 @@ const StatusWrapper = styled.View`
   justify-content: center;
   top: 0;
   bottom: 0;
+`;
+
+const StatusLottie = styled(LottieView)`
+  height: 320px;
+  width: 320px;
 `;
 
 const StatusImage = styled.Image`
@@ -148,7 +154,12 @@ export default () => {
         </InfoContainer>
       ) : null}
       <StatusWrapper>
-        <StatusIcon status={status} />
+        {/* <StatusIcon status={status} /> */}
+        <StatusLottie
+          source={require('../assets/lottie/verification-ready.json')}
+          autoPlay
+          loop
+        />
       </StatusWrapper>
       {status === 'fail' && (
         <RetryContainer onPress={readTag}>
