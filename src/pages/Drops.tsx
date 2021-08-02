@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from 'react';
-import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
+import { MaterialTabBar, Tabs } from 'react-native-collapsible-tab-view';
 import DropItem from '@src/components/DropItem';
 import styled from '@emotion/native';
-import { FlatList, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { useFocusEffect } from '@react-navigation/core';
 import api from '@src/api';
 import { Product } from '@src/constants/types';
@@ -13,9 +13,6 @@ const styles = StyleSheet.create({
   indicator: {
     backgroundColor: 'black',
   },
-  tabbar: {
-    backgroundColor: 'white',
-  },
   label: {
     fontWeight: 'bold',
   },
@@ -25,6 +22,8 @@ const HeaderContainer = styled.View`
   height: 60px;
   align-items: center;
   justify-content: center;
+  z-index: 1;
+  background-color: white;
 `;
 
 const HeaderTitle = styled.Text`
@@ -32,9 +31,20 @@ const HeaderTitle = styled.Text`
   font-family: 'Road Rage';
 `;
 
-const Banner = styled.View`
+const BannerContainer = styled.View`
   background-color: #000;
   height: 200px;
+`;
+
+const BodyContainer = styled.View`
+  flex: 1;
+`;
+
+const Header = () => <BannerContainer pointerEvents="none" />;
+
+const Container = styled.View`
+  flex: 1;
+  height: 100%;
 `;
 
 const Ongoing = () => {
@@ -42,12 +52,24 @@ const Ongoing = () => {
 
   useFocusEffect(
     useCallback(() => {
-      api.get('/products').then((res) => setProducts(res.data.products));
+      api
+        .get<{ products: Product[] }>('/products')
+        .then((res) =>
+          setProducts(
+            res.data.products.reduce(
+              (prev, curr) =>
+                prev.find((p) => p.nfcID === curr.nfcID)
+                  ? prev
+                  : [...prev, curr],
+              [] as Product[],
+            ),
+          ),
+        );
     }, []),
   );
 
   return (
-    <FlatList
+    <Tabs.FlatList
       data={products}
       listKey="nfcID"
       keyExtractor={(item) => item.nfcID}
@@ -66,42 +88,34 @@ const Ongoing = () => {
   );
 };
 
-const Drop = () => {
-  const [index, setIndex] = useState(0);
-
-  return (
-    <>
-      <HeaderContainer>
-        <HeaderTitle>AST</HeaderTitle>
-      </HeaderContainer>
-      <Banner />
-      <TabView
+const Drop = () => (
+  <Container>
+    <HeaderContainer>
+      <HeaderTitle>AST</HeaderTitle>
+    </HeaderContainer>
+    <BodyContainer>
+      <Tabs.Container
+        renderHeader={Header}
         renderTabBar={(props) => (
-          <TabBar
+          <MaterialTabBar
             {...props}
-            activeColor="black"
             inactiveColor="#b2b2b2"
+            activeColor="#000"
             indicatorStyle={styles.indicator}
-            style={styles.tabbar}
             labelStyle={styles.label}
           />
-        )}
-        navigationState={{
-          index,
-          routes: [
-            { key: 'ongoing', title: '진행 중' },
-            { key: 'ready', title: '발매 예정' },
-            { key: 'history', title: '지난 발매' },
-          ],
-        }}
-        onIndexChange={setIndex}
-        renderScene={SceneMap({
-          ongoing: Ongoing,
-          ready: Ongoing,
-          history: Ongoing,
-        })}
-      />
-    </>
-  );
-};
+        )}>
+        <Tabs.Tab name="ongoing" label="진행 중">
+          <Ongoing />
+        </Tabs.Tab>
+        <Tabs.Tab name="ready" label="발매 예정">
+          <Ongoing />
+        </Tabs.Tab>
+        <Tabs.Tab name="history" label="지난 발매">
+          <Ongoing />
+        </Tabs.Tab>
+      </Tabs.Container>
+    </BodyContainer>
+  </Container>
+);
 export default Drop;
