@@ -29,6 +29,16 @@ const styles = StyleSheet.create({
     width: 56,
     height: 56,
   },
+  tabContainerStyle: {
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: -10,
+    },
+    shadowOpacity: 0.05,
+    shadowRadius: 20,
+    elevation: 20,
+  },
 });
 
 const tabBarList: {
@@ -79,6 +89,9 @@ export default () => {
   return (
     <Tab.Navigator
       sceneContainerStyle={styles.tabSceneContainerStyle}
+      tabBarOptions={{
+        style: styles.tabContainerStyle,
+      }}
       lazy={false}>
       {tabBarList.map((page) => (
         <Tab.Screen
