@@ -16,6 +16,16 @@ const styles = StyleSheet.create({
   label: {
     fontWeight: 'bold',
   },
+  headerContainer: {
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    shadowOpacity: 0.05,
+    shadowRadius: 20,
+    elevation: 20,
+  },
 });
 
 const HeaderContainer = styled.View`
@@ -96,6 +106,7 @@ const Drop = () => (
     <BodyContainer>
       <Tabs.Container
         renderHeader={Header}
+        headerContainerStyle={styles.headerContainer}
         renderTabBar={(props) => (
           <MaterialTabBar
             {...props}
