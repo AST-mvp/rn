@@ -18,7 +18,7 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Assemble release with gradle
-        run: ./android/gradlew assembleRelease
+        run: ./gradlew assembleRelease
         working-directory: ./android
       - name: upload artifact
         uses: actions/upload-artifact@v2
