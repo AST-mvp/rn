@@ -75,6 +75,8 @@
 		<string>NanumSquareBold.ttf</string>
 		<string>Gong Gothic OTF Medium.otf</string>
 		<string>NEXON Lv1 Gothic OTF.otf</string>
+		<string>NanumSquareRegular.ttf</string>
+		<string>NotoSansKR-Bold.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
