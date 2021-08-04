@@ -3,7 +3,7 @@ import styled from '@emotion/native';
 import { GestureResponderEvent, ImageSourcePropType, View } from 'react-native';
 import Button from './Button';
 
-const Container = styled.View`
+const Container = styled.TouchableOpacity`
   padding: 20px;
   flex-direction: row;
   justify-content: space-between;
@@ -56,6 +56,7 @@ interface DropItemProps {
   price: number;
   description: string;
   onClickNotify: (event: GestureResponderEvent) => void;
+  onClickProduct: (event: GestureResponderEvent) => void;
 }
 
 const DropItem: React.FC<DropItemProps> = ({
@@ -66,8 +67,9 @@ const DropItem: React.FC<DropItemProps> = ({
   price,
   description,
   onClickNotify,
+  onClickProduct,
 }) => (
-  <Container>
+  <Container onPress={onClickProduct}>
     <ProductImage source={productImage} />
     <View>
       <LogoImage source={logoImage} resizeMode="contain" />

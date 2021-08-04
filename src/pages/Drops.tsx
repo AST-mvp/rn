@@ -19,6 +19,8 @@ import { Product } from '@src/constants/types';
 import logoImage from '../assets/images/logoImageTemp.jpg';
 import productImage from '../assets/images/productImageTemp.jpg';
 import moveToTopImage from '../assets/images/move-top.png';
+import { DropsStack, navigate } from '@src/router/navigator';
+import DropDetail from './DropDetail';
 
 const styles = StyleSheet.create({
   indicator: {
@@ -114,6 +116,7 @@ const Ongoing = (props: Partial<FlatListProps<Product>>) => {
           description="5월 12일 오전 11시 출시 예정"
           price={139000}
           onClickNotify={() => {}}
+          onClickProduct={() => navigate('DropDetail', { product: item })}
         />
       )}
       {...props}
@@ -121,7 +124,7 @@ const Ongoing = (props: Partial<FlatListProps<Product>>) => {
   );
 };
 
-const Drop = () => {
+const DropsList = () => {
   const ref = useRef<CollapsibleRef>();
   const [showingMoveToTop, setShowingMoveToTop] = useState(false);
   const moveToTop = useCallback(() => {
@@ -139,9 +142,6 @@ const Drop = () => {
   );
   return (
     <Container>
-      <HeaderContainer>
-        <HeaderTitle>AST</HeaderTitle>
-      </HeaderContainer>
       <BodyContainer>
         <Tabs.Container
           renderHeader={Header}
@@ -187,4 +187,21 @@ const Drop = () => {
     </Container>
   );
 };
-export default Drop;
+
+const Drops = () => {
+  return (
+    <>
+      <HeaderContainer>
+        <HeaderTitle>AST</HeaderTitle>
+      </HeaderContainer>
+      <DropsStack.Navigator
+        initialRouteName="DropsList"
+        headerMode="none"
+        screenOptions={{ cardStyle: { backgroundColor: 'white' } }}>
+        <DropsStack.Screen name="DropsList" component={DropsList} />
+        <DropsStack.Screen name="DropDetail" component={DropDetail} />
+      </DropsStack.Navigator>
+    </>
+  );
+};
+export default Drops;
