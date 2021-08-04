@@ -123,7 +123,7 @@ const Ongoing = (props: Partial<FlatListProps<Product>>) => {
 
 const Drop = () => {
   const ref = useRef<CollapsibleRef>();
-  const [showingMoveToTop, setShowingMoveToTop] = useState(true);
+  const [showingMoveToTop, setShowingMoveToTop] = useState(false);
   const moveToTop = useCallback(() => {
     if (!ref.current) {
       return;
