@@ -14,7 +14,7 @@ export default () => {
   return (
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
-        initialRouteName="Root"
+        initialRouteName="Main"
         headerMode="none"
         screenOptions={{ cardStyle: { backgroundColor: 'white' } }}>
         <Stack.Screen name="Root" component={Root} />
