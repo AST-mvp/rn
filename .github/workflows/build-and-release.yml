@@ -19,11 +19,6 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-      - name: Cache Gradle Wrapper
-        uses: actions/cache@v2
-        with:
-          path: ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('android/gradle/wrapper/gradle-wrapper.properties') }}
 
       - name: Cache Gradle Dependencies
         uses: actions/cache@v2
