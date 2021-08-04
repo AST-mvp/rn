@@ -116,11 +116,7 @@ const Ongoing = (props: Partial<FlatListProps<Product>>) => {
           description="5월 12일 오전 11시 출시 예정"
           price={139000}
           onClickNotify={() => {}}
-          onClickProduct={() =>
-            navigate('DropDetail', {
-              nfcId: item.nfcID,
-            })
-          }
+          onClickProduct={() => navigate('DropDetail', { product: item })}
         />
       )}
       {...props}

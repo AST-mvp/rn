@@ -5,6 +5,7 @@ import {
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createRef } from 'react';
+import { Product } from '@src/constants/types';
 
 export type RootStackParamList = {
   Root: undefined;
@@ -32,7 +33,7 @@ export type MainTabParamList = {
 export type DropsStackParamList = {
   DropsList: undefined;
   DropDetail: {
-    nfcId: string;
+    product: Product;
   };
 };
 
@@ -48,7 +49,7 @@ type ParamList = RootStackParamList & MainTabParamList & DropsStackParamList;
 
 export const navigate = <K extends keyof ParamList>(
   routeName: K,
-  ...params: ParamList[K] extends undefined ? [undefined?] : [ParamList[K]]
+  ...[params]: ParamList[K] extends undefined ? [undefined?] : [ParamList[K]]
 ) => {
   if (!navigationRef.current) {
     throw new Error('navigator is not defined');
