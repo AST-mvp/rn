@@ -7,7 +7,6 @@ import styled from '@emotion/native';
 import nfcManager from 'react-native-nfc-manager';
 
 import alertOutlined from '../assets/images/alert-outlined.png';
-import readyVerificationImage from '../assets/images/verification-ready.png';
 import doneVerificationImage from '../assets/images/verification-done.png';
 import failVerificationImage from '../assets/images/verification-fail.png';
 import retryIcon from '../assets/images/retry-outlined.png';
@@ -97,18 +96,6 @@ const getInfoText = (status: Status) => {
   return '';
 };
 
-const StatusIcon: React.FC<{ status: Status }> = ({ status }) => (
-  <StatusImage
-    source={
-      status === 'ready'
-        ? readyVerificationImage
-        : status === 'done'
-        ? doneVerificationImage
-        : failVerificationImage
-    }
-  />
-);
-
 export default () => {
   const { changeTheme, resetTheme } = useTheme();
   const [status, setStatus] = useState<Status>('ready');
@@ -154,12 +141,19 @@ export default () => {
         </InfoContainer>
       ) : null}
       <StatusWrapper>
-        {/* <StatusIcon status={status} /> */}
-        <StatusLottie
-          source={require('../assets/lottie/verification-ready.json')}
-          autoPlay
-          loop
-        />
+        {status === 'ready' ? (
+          <StatusLottie
+            source={require('../assets/lottie/verification-ready.json')}
+            autoPlay
+            loop
+          />
+        ) : (
+          <StatusImage
+            source={
+              status === 'done' ? doneVerificationImage : failVerificationImage
+            }
+          />
+        )}
       </StatusWrapper>
       {status === 'fail' && (
         <RetryContainer onPress={readTag}>
